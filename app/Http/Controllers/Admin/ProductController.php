@@ -362,7 +362,7 @@ class ProductController extends Controller
                 $nestedData[] = $product->material;
                 $nestedData[] = $product->price;
                 $nestedData[] = '<a href="javascript:void(0);" title="'.$checkText.'" id="publish-'.$product->productslug.'">'.$checkIcon.'</a>';
-                $nestedData[] = '<a href="'.route('admin.editproduct', ['genre' => 'frame','product' => $product->productslug]).'" title="Edit Product"><i class="fa fa-edit"></i></a>';
+                $nestedData[] = '<a href="'.route('admin.editproduct', ['genre' => $product->genre,'product' => $product->productslug]).'" title="Edit Product"><i class="fa fa-edit"></i></a>';
                 $nestedData[] = '<a href="javascript:void(0);" title="Delete Product" id="delete-'.$product->productslug.'"><i class="fa fa-trash"></i></a>';
                 $nestedData['DT_RowId'] = $product->id;
                 $data[] = $nestedData;
