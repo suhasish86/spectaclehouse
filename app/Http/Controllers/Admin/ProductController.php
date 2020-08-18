@@ -355,7 +355,7 @@ class ProductController extends Controller
                                      : 'Record Deleted';
 
                 $nestedData = [];
-                $nestedData[] = $product->id;
+                $nestedData[] = $key+1;
                 $nestedData[] = $product->productname;
                 $nestedData[] = $product->brand;
                 $nestedData[] = $product->style;

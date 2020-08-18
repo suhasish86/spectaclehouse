@@ -17,6 +17,7 @@ class ModifyProductsTableDefaults extends Migration
             $table->integer('style')->default(0)->change();
             $table->integer('brand')->default(0)->change();
             $table->integer('material')->default(0)->change();
+            $table->integer('category')->default(0)->change();
         });
     }
 
