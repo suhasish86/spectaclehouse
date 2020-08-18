@@ -337,6 +337,7 @@ class ProductController extends Controller
         }
         $data = array();
         if (!empty($products)) {
+            
             foreach ($products as $key => $product) {
 
                 $checkIcon = ((int)$product->status > 0) ? '<i class="fa fa-check"></i>' : '<i class="fa fa-times"></i>';
