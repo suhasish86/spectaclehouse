@@ -83,10 +83,11 @@ Admin | Product Management: {{ ucfirst($product->genre) }}list
     </div>
 </div>
 @endsection
+
+@section('page_scrypt')
 <script type="text/javascript">
     var genre = "{{ $product->genre }}";
 </script>
-@section('page_scrypt')
 <script src="{{ asset('adminassets/js/module-scripts/product.js') }}"></script>
 @endsection
 
