@@ -45,6 +45,9 @@
     <div class="login-content">
         <!-- Login -->
         <div class="nk-block toggled" id="l-login">
+            <div class="loginLogo">
+                <img src="{{ asset('adminassets/img/logo/logo.png') }}" alt="">
+            </div>
             <div class="nk-form">
                 <form name="loginfrm" id="loginfrm">
                     @csrf
@@ -75,6 +78,9 @@
 
         <!-- Register -->
         <div class="nk-block" id="l-register">
+        <div class="loginLogo">
+                <img src="{{ asset('adminassets/img/logo/logo.png') }}" alt="">
+            </div>
             <div class="nk-form">
                 <div class="input-group">
                     <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
@@ -108,6 +114,9 @@
 
         <!-- Forgot Password -->
         <div class="nk-block" id="l-forget-password">
+        <div class="loginLogo">
+                <img src="{{ asset('adminassets/img/logo/logo.png') }}" alt="">
+            </div>
             <div class="nk-form">
                 <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu risus. Curabitur commodo lorem fringilla enim feugiat commodo sed ac lacus.</p>
 
