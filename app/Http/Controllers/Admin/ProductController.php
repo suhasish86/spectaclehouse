@@ -344,13 +344,13 @@ class ProductController extends Controller
                 $checkText = ((int)$product->status > 0) ? 'Un-Publish Product' : 'Publish Product';
 
 
-                $product->brand = (\App\Admin\Brand::find($product->brand)->exists())
+                $product->brand = (\App\Admin\Brand::find($product->brand))
                                   ? \App\Admin\Brand::find($product->brand)->brandname
                                   : 'Record Deleted';
-                $product->style = (\App\Admin\Style::find($product->style)->exists())
+                $product->style = (\App\Admin\Style::find($product->style))
                                   ? \App\Admin\Style::find($product->style)->stylename
                                   : 'Record Deleted';
-                $product->material = (\App\Admin\Material::find($product->material)->exists())
+                $product->material = (\App\Admin\Material::find($product->material))
                                      ? \App\Admin\Material::find($product->material)->materialname
                                      : 'Record Deleted';
 
