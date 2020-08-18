@@ -337,15 +337,22 @@ class ProductController extends Controller
         }
         $data = array();
         if (!empty($products)) {
-            
+
             foreach ($products as $key => $product) {
 
                 $checkIcon = ((int)$product->status > 0) ? '<i class="fa fa-check"></i>' : '<i class="fa fa-times"></i>';
                 $checkText = ((int)$product->status > 0) ? 'Un-Publish Product' : 'Publish Product';
 
-                $product->brand = \App\Admin\Brand::find($product->brand)->brandname;
-                $product->style = \App\Admin\Style::find($product->style)->stylename;
-                $product->material = \App\Admin\Material::find($product->material)->materialname;
+
+                $product->brand = (\App\Admin\Brand::find($product->brand)->exists())
+                                  ? \App\Admin\Brand::find($product->brand)->brandname
+                                  : 'Record Deleted';
+                $product->style = (\App\Admin\Style::find($product->style)->exists())
+                                  ? \App\Admin\Style::find($product->style)->stylename
+                                  : 'Record Deleted';
+                $product->material = (\App\Admin\Material::find($product->material)->exists())
+                                     ? \App\Admin\Material::find($product->material)->materialname
+                                     : 'Record Deleted';
 
                 $nestedData = [];
                 $nestedData[] = $product->id;
