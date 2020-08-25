@@ -301,7 +301,7 @@ class ProductController extends Controller
             4 => 'price',
             3 => 'status'
         );
-        $totalData = Product::count();
+        $totalData = Product::where('genre', $request->genre)->count();
         $totalFiltered = $totalData;
         $limit = $request->input('length');
         $start = $request->input('start');
