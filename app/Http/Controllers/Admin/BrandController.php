@@ -271,7 +271,7 @@ class BrandController extends Controller
                 $checkText = ((int)$brand->status > 0) ? 'Un-Publish Brand' : 'Publish Brand';
 
                 $nestedData = [];
-                $nestedData[] = $key;
+                $nestedData[] = $key + 1;
                 $nestedData[] = $brand->brandname;
                 $nestedData[] = '<a href="javascript:void(0);" title="'.$checkText.'" id="publish-'.$brand->brandslug.'">'.$checkIcon.'</a>';
                 $nestedData[] = '<a href="'.route('admin.editbrand', ['brand' => $brand->brandslug, 'brandproduct' => $brand->product]).'" title="Edit Brand"><i class="fa fa-edit"></i></a>';
