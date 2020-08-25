@@ -171,7 +171,7 @@
             //Target & Redirect Url
             var slug = $('input#materialslug').val();
             var target = (slug == '') ? host + 'admin/savematerial' : host + 'admin/updatematerial/' + slug
-            var redirect = host + 'admin/frame/materiallist';
+            var redirect = host + 'admin/' + product + '/materiallist';
 
             if (res) {
                 var arg = $("form#creatematerialfrm").serialize();

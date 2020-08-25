@@ -109,5 +109,8 @@ Admin | Frame Styles Management: {{ ($style->styleslug != '') ? 'Edit' : 'Add' }
 @endsection
 
 @section('page_scrypt')
+<script type="text/javascript">
+    var product = "{{ $style->product }}";
+</script>
 <script src="{{ asset('adminassets/js/module-scripts/style.js') }}"></script>
 @endsection

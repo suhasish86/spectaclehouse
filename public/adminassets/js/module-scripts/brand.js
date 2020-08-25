@@ -171,7 +171,7 @@
             //Target & Redirect Url
             var slug = $('input#brandslug').val();
             var target = (slug == '') ? host + 'admin/savebrand' : host + 'admin/updatebrand/' + slug
-            var redirect = host + 'admin/frame/brandlist';
+            var redirect = host + 'admin/' + product + '/brandlist';
 
             if (res) {
                 var arg = $("form#createbrandfrm").serialize();

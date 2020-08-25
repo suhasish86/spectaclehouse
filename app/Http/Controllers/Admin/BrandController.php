@@ -230,7 +230,7 @@ class BrandController extends Controller
             2 => 'description',
             3 => 'status'
         );
-        $totalData = Brand::count();
+        $totalData = Brand::where('product', $request->product)->count();
         $totalFiltered = $totalData;
         $limit = $request->input('length');
         $start = $request->input('start');

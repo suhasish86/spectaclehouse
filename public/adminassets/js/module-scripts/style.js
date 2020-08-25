@@ -171,7 +171,7 @@
             //Target & Redirect Url
             var slug = $('input#styleslug').val();
             var target = (slug == '') ? host + 'admin/savestyle' : host + 'admin/updatestyle/' + slug
-            var redirect = host + 'admin/frame/stylelist';
+            var redirect = host + 'admin/' + product + '/stylelist';
 
             if (res) {
                 var arg = $("form#createstylefrm").serialize();

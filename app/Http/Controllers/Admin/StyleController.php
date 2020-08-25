@@ -230,7 +230,7 @@ class StyleController extends Controller
             2 => 'description',
             3 => 'status'
         );
-        $totalData = Style::count();
+        $totalData = Style::where('product', $request->product)->count();
         $totalFiltered = $totalData;
         $limit = $request->input('length');
         $start = $request->input('start');

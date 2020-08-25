@@ -109,5 +109,8 @@ Admin | Frame Materials Management: {{ ($material->materialslug != '') ? 'Edit' 
 @endsection
 
 @section('page_scrypt')
+<script type="text/javascript">
+    var product = "{{ $material->product }}";
+</script>
 <script src="{{ asset('adminassets/js/module-scripts/material.js') }}"></script>
 @endsection

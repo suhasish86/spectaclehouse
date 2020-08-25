@@ -109,5 +109,8 @@ Admin | Frame Brands Management: {{ ($brand->brandslug != '') ? 'Edit' : 'Add' }
 @endsection
 
 @section('page_scrypt')
+<script type="text/javascript">
+    var product = "{{ $brand->product }}";
+</script>
 <script src="{{ asset('adminassets/js/module-scripts/brand.js') }}"></script>
 @endsection

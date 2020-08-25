@@ -229,7 +229,7 @@ class MaterialController extends Controller
             2 => 'description',
             3 => 'status'
         );
-        $totalData = Material::count();
+        $totalData = Material::where('product', $request->product)->count();
         $totalFiltered = $totalData;
         $limit = $request->input('length');
         $start = $request->input('start');
