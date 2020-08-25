@@ -253,7 +253,7 @@ class CategoryController extends Controller
                 $checkText = ((int)$category->status > 0) ? 'Un-Publish Category' : 'Publish Category';
 
                 $nestedData = [];
-                $nestedData[] = $category->id;
+                $nestedData[] = $key + 1;
                 $nestedData[] = $category->categoryname;
                 $nestedData[] = '<a href="javascript:void(0);" title="'.$checkText.'" id="publish-'.$category->categoryslug.'">'.$checkIcon.'</a>';
                 $nestedData[] = '<a href="'.route('admin.editcategory', ['category' => $category->categoryslug]).'" title="Edit Category"><i class="fa fa-edit"></i></a>';

@@ -272,7 +272,7 @@ class FacilityController extends Controller
                 $checkText = ((int)$facility->status > 0) ? 'Un-Publish facility' : 'Publish facility';
 
                 $nestedData = [];
-                $nestedData[] = $facility->id;
+                $nestedData[] = $key + 1;
                 $nestedData[] = $facility->facilityname;
                 $nestedData[] = '<a href="javascript:void(0);" title="'.$checkText.'" id="publish-'.$facility->facilityslug.'">'.$checkIcon.'</a>';
                 $nestedData[] = '<a href="'.route('admin.editfacility', ['facility' => $facility->facilityslug, 'facilitytype' => $facility->facilitytype]).'" title="Edit facility"><i class="fa fa-edit"></i></a>';

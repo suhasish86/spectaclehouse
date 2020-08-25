@@ -259,7 +259,7 @@ class PageController extends Controller
                 $checkText = ((int)$page->status > 0) ? 'Un-Publish Page' : 'Publish Page';
 
                 $nestedData = [];
-                $nestedData[] = $page->id;
+                $nestedData[] = $key + 1;
                 $nestedData[] = $page->pagename;
                 $nestedData[] = $page->description;
                 $nestedData[] = '<a href="javascript:void(0);" title="'.$checkText.'" id="publish-'.$page->pageslug.'">'.$checkIcon.'</a>';
