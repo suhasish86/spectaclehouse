@@ -130,9 +130,9 @@
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
                                 <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                                <li><a href="{{ route('admin.pagelist') }}">Page Manager</a></li>
-                                <li><a href="{{ route('admin.categorylist') }}">Category Manager</a></li>
-                                <li><a data-toggle="collapse" data-target="#framemanager" href="#">Frame Manager</a>
+                                <li><a href="{{ route('admin.pagelist') }}">Pages</a></li>
+                                <li><a href="{{ route('admin.categorylist') }}">Categories</a></li>
+                                <li><a data-toggle="collapse" data-target="#framemanager" href="#">Frames</a>
                                     <ul id="framemanager" class="collapse dropdown-header-top">
                                         <li><a href="{{ route('admin.brandlist', ['brandproduct'=>'frame']) }}">Brands</a></li>
                                         <li><a href="{{ route('admin.stylelist', ['styleproduct'=>'frame']) }}">Styles</a></li>
@@ -140,7 +140,7 @@
                                         <li><a href="{{ route('admin.productlist', ['genre'=>'frame']) }}">Frames</a></li>
                                     </ul>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#sunglassanager" href="#">Sunglass Manager</a>
+                                <li><a data-toggle="collapse" data-target="#sunglassanager" href="#">Sunglasses</a>
                                     <ul id="sunglassanager" class="collapse dropdown-header-top">
                                         <li><a href="{{ route('admin.brandlist', ['brandproduct'=>'sunglass']) }}">Brands</a></li>
                                         <li><a href="{{ route('admin.stylelist', ['styleproduct'=>'sunglass']) }}">Styles</a></li>
@@ -148,12 +148,26 @@
                                         <li><a href="{{ route('admin.productlist', ['genre'=>'sunglass']) }}">Sunglasses</a></li>
                                     </ul>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#lensmanager" href="#">Lens Manager</a>
+                                <li><a data-toggle="collapse" data-target="#lensmanager" href="#">Lens</a>
                                     <ul id="lensmanager" class="collapse dropdown-header-top">
                                         <li><a href="{{ route('admin.brandlist', ['brandproduct'=>'lens']) }}">Brands</a></li>
                                         <li><a href="{{ route('admin.stylelist', ['styleproduct'=>'lens']) }}">Styles</a></li>
                                         <li><a href="{{ route('admin.materiallist', ['materialproduct'=>'lens']) }}">Materials</a></li>
                                         <li><a href="{{ route('admin.productlist', ['genre'=>'lens']) }}">Lenses</a></li>
+                                    </ul>
+                                </li>
+                                <li><a data-toggle="collapse" data-target="#contactlensmanager" href="#">Contact Lens</a>
+                                    <ul id="contactlensmanager" class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('admin.brandlist', ['brandproduct'=>'contactlens']) }}">Brands</a></li>
+                                        <li><a href="{{ route('admin.stylelist', ['styleproduct'=>'contactlens']) }}">Styles</a></li>
+                                        <li><a href="{{ route('admin.materiallist', ['materialproduct'=>'contactlens']) }}">Materials</a></li>
+                                        <li><a href="{{ route('admin.productlist', ['genre'=>'contactlens']) }}">Lenses</a></li>
+                                    </ul>
+                                </li>
+                                <li><a data-toggle="collapse" data-target="#facilitymanager" href="#">Facilities</a>
+                                    <ul id="facilitymanager" class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('admin.facilitylist', ['facilitytype' => 'services']) }}">Services</a></li>
+                                        <li><a href="{{ route('admin.facilitylist', ['facilitytype' => 'eyeclinic']) }}">Eye Clinic</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -174,19 +188,25 @@
                             <a href="{{ route('admin.dashboard') }}"><i class="notika-icon notika-house"></i> Dashboard</a>
                         </li>
                         <li class="{{ (request()->is('admin/dashboard')) ? 'active' : '' }}">
-                            <a href="{{ route('admin.pagelist') }}"><i class="notika-icon notika-house"></i> Page Manager</a>
+                            <a href="{{ route('admin.pagelist') }}"><i class="notika-icon notika-house"></i> Pages</a>
                         </li>
                         <li class="{{ (request()->is('admin/dashboard')) ? 'active' : '' }}">
-                            <a href="{{ route('admin.categorylist') }}"><i class="notika-icon notika-house"></i> Category Manager</a>
+                            <a href="{{ route('admin.categorylist') }}"><i class="notika-icon notika-house"></i> Categories</a>
                         </li>
                         <li class="{{ (request()->is('admin/frame/*')) ? 'active' : '' }}">
-                            <a data-toggle="tab" href="#frames"><i class="notika-icon notika-mail"></i> Frame Manager</a>
+                            <a data-toggle="tab" href="#frames"><i class="notika-icon notika-mail"></i> Frames</a>
                         </li>
                         <li class="{{ (request()->is('admin/sunglass/*')) ? 'active' : '' }}">
-                            <a data-toggle="tab" href="#sunglasses"><i class="notika-icon notika-mail"></i> Sunglass Manager</a>
+                            <a data-toggle="tab" href="#sunglasses"><i class="notika-icon notika-mail"></i> Sunglasses</a>
                         </li>
                         <li class="{{ (request()->is('admin/lense/*')) ? 'active' : '' }}">
-                            <a data-toggle="tab" href="#lenses"><i class="notika-icon notika-mail"></i> Lens Manager</a>
+                            <a data-toggle="tab" href="#lenses"><i class="notika-icon notika-mail"></i> Lens</a>
+                        </li>
+                        <li class="{{ (request()->is('admin/contactlense/*')) ? 'active' : '' }}">
+                            <a data-toggle="tab" href="#contactlenses"><i class="notika-icon notika-mail"></i> Contact Lens</a>
+                        </li>
+                        <li class="{{ (request()->is('admin/createfacility/*') || request()->is('admin/editfacility/*') || request()->is('admin/facilitylist/*')) ? 'active' : '' }}">
+                            <a data-toggle="tab" href="#facility"><i class="notika-icon notika-mail"></i> Facilities</a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
@@ -212,6 +232,20 @@
                                 <li><a href="{{ route('admin.stylelist', ['styleproduct' => 'lense']) }}">Styles</a></li>
                                 <li><a href="{{ route('admin.materiallist', ['materialproduct' => 'lense']) }}">Materials</a></li>
                                 <li><a href="{{ route('admin.productlist', ['genre' => 'lense']) }}">Lenses</a></li>
+                            </ul>
+                        </div>
+                        <div id="contactlenses" class="tab-pane {{ (request()->is('admin/contactlense/*')) ? 'active' : '' }} notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="{{ route('admin.brandlist', ['brandproduct' => 'contactlense']) }}">Brands</a></li>
+                                <li><a href="{{ route('admin.stylelist', ['styleproduct' => 'contactlense']) }}">Styles</a></li>
+                                <li><a href="{{ route('admin.materiallist', ['materialproduct' => 'contactlense']) }}">Materials</a></li>
+                                <li><a href="{{ route('admin.productlist', ['genre' => 'contactlense']) }}">Contact Lenses</a></li>
+                            </ul>
+                        </div>
+                        <div id="facility" class="tab-pane {{ (request()->is('admin/createfacility/*') || request()->is('admin/editfacility/*') || request()->is('admin/facilitylist/*')) ? 'active' : '' }} notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="{{ route('admin.facilitylist', ['facilitytype' => 'services']) }}">Services</a></li>
+                                <li><a href="{{ route('admin.facilitylist', ['facilitytype' => 'eyeclinic']) }}">Eye Clinic</a></li>
                             </ul>
                         </div>
                     </div>

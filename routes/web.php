@@ -108,6 +108,18 @@ Route::name('admin.')->prefix('admin/')->namespace('Admin')->group(function () {
         Route::post('/deleteproduct/{product}', 'ProductController@destroy')->name('deleteproduct');
         Route::post('/deleteproductimage/{product}', 'ProductController@removeimage')->name('deleteproductimage');
 
+        //Facility manager
+        Route::get('/facilitylist/{facilitytype}', 'FacilityController@index')->name('facilitylist');
+        Route::get('/createfacility/{facilitytype}', 'FacilityController@create')->name('createfacility');
+        Route::get('/editfacility/{facilitytype}/{facility}', 'FacilityController@edit')->name('editfacility');
+
+        Route::post('/ajax_facilitylist', 'FacilityController@facilityList')->name('ajax_facilitylist');
+        Route::post('/savefacility', 'FacilityController@store')->name('savefacility');
+        Route::post('/updatefacility/{facility}', 'FacilityController@update')->name('updatefacility');
+        Route::post('/publishfacility/{facility}', 'FacilityController@publish')->name('publishfacility');
+        Route::post('/deletefacility/{facility}', 'FacilityController@destroy')->name('deletefacility');
+        Route::post('/deletefacilitybanner/{facility}', 'FacilityController@removebanner')->name('deletefacilitybanner');
+
     });
 
 });
