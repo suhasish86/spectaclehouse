@@ -270,7 +270,7 @@ class MaterialController extends Controller
                 $checkText = ((int)$material->status > 0) ? 'Un-Publish Material' : 'Publish Material';
 
                 $nestedData = [];
-                $nestedData[] = $material->id;
+                $nestedData[] = $key;
                 $nestedData[] = $material->materialname;
                 $nestedData[] = '<a href="javascript:void(0);" title="'.$checkText.'" id="publish-'.$material->materialslug.'">'.$checkIcon.'</a>';
                 $nestedData[] = '<a href="'.route('admin.editmaterial', ['material' => $material->materialslug, 'materialproduct' => $material->product]).'" title="Edit Material"><i class="fa fa-edit"></i></a>';

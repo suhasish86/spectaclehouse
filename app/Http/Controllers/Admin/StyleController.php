@@ -271,7 +271,7 @@ class StyleController extends Controller
                 $checkText = ((int)$style->status > 0) ? 'Un-Publish Style' : 'Publish Style';
 
                 $nestedData = [];
-                $nestedData[] = $style->id;
+                $nestedData[] = $key;
                 $nestedData[] = $style->stylename;
                 $nestedData[] = '<a href="javascript:void(0);" title="'.$checkText.'" id="publish-'.$style->styleslug.'">'.$checkIcon.'</a>';
                 $nestedData[] = '<a href="'.route('admin.editstyle', ['style' => $style->styleslug, 'styleproduct' => $style->product]).'" title="Edit Style"><i class="fa fa-edit"></i></a>';
