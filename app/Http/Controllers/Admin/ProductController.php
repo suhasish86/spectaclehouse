@@ -63,7 +63,7 @@ class ProductController extends Controller
         }
 
         $product = new Product();
-        $request->validate([
+        $validationArr = [
             'productname' => 'required',
             'productsku' => 'required',
             'genre' => 'required',
@@ -75,16 +75,33 @@ class ProductController extends Controller
             'productprice' => 'required',
             'browsertitle' => 'required',
             'metakeyword' => 'required',
-            'metadescription' => 'required',
-        ]);
+            'metadescription' => 'required'
+        ];
+        switch($request->genre){
+            case 'lense':
+            unset($validationArr['productcategory']);
+            break;
+
+            case 'contactlense':
+                unset($validationArr['productcategory']);
+                unset($validationArr['productmaterial']);
+            break;
+
+            case 'lense':
+                unset($validationArr['productcategory']);
+                unset($validationArr['productmaterial']);
+                unset($validationArr['productmaterial']);
+            break;
+        }
+        $request->validate($validationArr);
         $product->author = $request->user()->id;
         $product->productname = $request->productname;
         $product->productsku = $request->productsku;
         $product->genre = $request->genre;
-        $product->style = $request->productstyle;
+        $product->style = isset($request->productstyle) ? $request->productstyle : 0;
         $product->brand = $request->productbrand;
-        $product->material = $request->productmaterial;
-        $product->category = $request->productcategory;
+        $product->material = isset($request->productmaterial) ? $request->productmaterial : 0;
+        $product->category = isset($request->productcategory) ? $request->productcategory : 0;
         $product->description = $request->description;
         $product->specification = json_encode($specs);
         $product->price = $request->productprice;
@@ -166,7 +183,7 @@ class ProductController extends Controller
             }
         }
 
-        $request->validate([
+        $validationArr = [
             'productname' => 'required',
             'productsku' => 'required',
             'genre' => 'required',
@@ -178,16 +195,33 @@ class ProductController extends Controller
             'productprice' => 'required',
             'browsertitle' => 'required',
             'metakeyword' => 'required',
-            'metadescription' => 'required',
-        ]);
+            'metadescription' => 'required'
+        ];
+        switch($request->genre){
+            case 'lense':
+            unset($validationArr['productcategory']);
+            break;
+
+            case 'contactlense':
+                unset($validationArr['productcategory']);
+                unset($validationArr['productmaterial']);
+            break;
+
+            case 'lense':
+                unset($validationArr['productcategory']);
+                unset($validationArr['productmaterial']);
+                unset($validationArr['productmaterial']);
+            break;
+        }
+        $request->validate($validationArr);
         $product->author = $request->user()->id;
         $product->productname = $request->productname;
         $product->productsku = $request->productsku;
         $product->genre = $request->genre;
-        $product->style = $request->productstyle;
+        $product->style = isset($request->productstyle) ? $request->productstyle : 0;
         $product->brand = $request->productbrand;
-        $product->material = $request->productmaterial;
-        $product->category = $request->productcategory;
+        $product->material = isset($request->productmaterial) ? $request->productmaterial : 0;
+        $product->category = isset($request->productcategory) ? $request->productcategory : 0;
         $product->description = $request->description;
         $product->specification = json_encode($specs);
         $product->price = $request->productprice;
@@ -346,20 +380,33 @@ class ProductController extends Controller
 
                 $product->brand = (\App\Admin\Brand::find($product->brand))
                                   ? \App\Admin\Brand::find($product->brand)->brandname
-                                  : 'Record Deleted';
+                                  : 'Brand not found';
                 $product->style = (\App\Admin\Style::find($product->style))
                                   ? \App\Admin\Style::find($product->style)->stylename
-                                  : 'Record Deleted';
+                                  : 'Style not found';
                 $product->material = (\App\Admin\Material::find($product->material))
                                      ? \App\Admin\Material::find($product->material)->materialname
-                                     : 'Record Deleted';
+                                     : 'Material not found';
 
                 $nestedData = [];
                 $nestedData[] = $key+1;
                 $nestedData[] = $product->productname;
                 $nestedData[] = $product->brand;
-                $nestedData[] = $product->style;
-                $nestedData[] = $product->material;
+                switch($genre){
+                    case 'contactlense':
+                    $nestedData[] = $product->style;
+                    break;
+
+                    case 'accessories':
+                    break;
+
+                    default:
+                    $nestedData[] = $product->style;
+                    $nestedData[] = $product->material;
+                    break;
+                }
+
+
                 $nestedData[] = $product->price;
                 $nestedData[] = '<a href="javascript:void(0);" title="'.$checkText.'" id="publish-'.$product->productslug.'">'.$checkIcon.'</a>';
                 $nestedData[] = '<a href="'.route('admin.editproduct', ['genre' => $product->genre,'product' => $product->productslug]).'" title="Edit Product"><i class="fa fa-edit"></i></a>';

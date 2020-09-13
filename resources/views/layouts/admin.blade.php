@@ -161,7 +161,15 @@
                                         <li><a href="{{ route('admin.brandlist', ['brandproduct'=>'contactlens']) }}">Brands</a></li>
                                         <li><a href="{{ route('admin.stylelist', ['styleproduct'=>'contactlens']) }}">Styles</a></li>
                                         <li><a href="{{ route('admin.materiallist', ['materialproduct'=>'contactlens']) }}">Materials</a></li>
-                                        <li><a href="{{ route('admin.productlist', ['genre'=>'contactlens']) }}">Lenses</a></li>
+                                        <li><a href="{{ route('admin.productlist', ['genre'=>'contactlens']) }}">Contact Lenses</a></li>
+                                    </ul>
+                                </li>
+                                <li><a data-toggle="collapse" data-target="#accessoriesmanager" href="#">Accessories</a>
+                                    <ul id="accessoriesmanager" class="collapse dropdown-header-top">
+                                        <li><a href="{{ route('admin.brandlist', ['brandproduct'=>'accessories']) }}">Brands</a></li>
+                                        <li><a href="{{ route('admin.stylelist', ['styleproduct'=>'accessories']) }}">Styles</a></li>
+                                        <li><a href="{{ route('admin.materiallist', ['materialproduct'=>'accessories']) }}">Materials</a></li>
+                                        <li><a href="{{ route('admin.productlist', ['genre'=>'accessories']) }}">Accessories</a></li>
                                     </ul>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#facilitymanager" href="#">Facilities</a>
@@ -205,6 +213,9 @@
                         <li class="{{ (request()->is('admin/contactlense/*')) ? 'active' : '' }}">
                             <a data-toggle="tab" href="#contactlenses"><i class="notika-icon notika-mail"></i> Contact Lens</a>
                         </li>
+                        <li class="{{ (request()->is('admin/accessories/*')) ? 'active' : '' }}">
+                            <a data-toggle="tab" href="#accessories"><i class="notika-icon notika-mail"></i> Accessories</a>
+                        </li>
                         <li class="{{ (request()->is('admin/createfacility/*') || request()->is('admin/editfacility/*') || request()->is('admin/facilitylist/*')) ? 'active' : '' }}">
                             <a data-toggle="tab" href="#facility"><i class="notika-icon notika-mail"></i> Facilities</a>
                         </li>
@@ -238,8 +249,16 @@
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="{{ route('admin.brandlist', ['brandproduct' => 'contactlense']) }}">Brands</a></li>
                                 <li><a href="{{ route('admin.stylelist', ['styleproduct' => 'contactlense']) }}">Styles</a></li>
-                                <li><a href="{{ route('admin.materiallist', ['materialproduct' => 'contactlense']) }}">Materials</a></li>
+                                {{-- <li><a href="{{ route('admin.materiallist', ['materialproduct' => 'contactlense']) }}">Materials</a></li> --}}
                                 <li><a href="{{ route('admin.productlist', ['genre' => 'contactlense']) }}">Contact Lenses</a></li>
+                            </ul>
+                        </div>
+                        <div id="accessories" class="tab-pane {{ (request()->is('admin/accessories/*')) ? 'active' : '' }} notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="{{ route('admin.brandlist', ['brandproduct' => 'accessories']) }}">Brands</a></li>
+                                {{-- <li><a href="{{ route('admin.stylelist', ['styleproduct' => 'accessories']) }}">Styles</a></li> --}}
+                                {{-- <li><a href="{{ route('admin.materiallist', ['materialproduct' => 'accessories']) }}">Materials</a></li> --}}
+                                <li><a href="{{ route('admin.productlist', ['genre' => 'accessories']) }}">Accessories</a></li>
                             </ul>
                         </div>
                         <div id="facility" class="tab-pane {{ (request()->is('admin/createfacility/*') || request()->is('admin/editfacility/*') || request()->is('admin/facilitylist/*')) ? 'active' : '' }} notika-tab-menu-bg animated flipInX">

@@ -164,6 +164,7 @@ Admin | Product Management: {{ isset($product->productslug) ? 'Edit '.ucfirst($p
                         </div>
                     </div>
                     @endif
+                    @if($product->genre != 'lense' && $product->genre != 'accessories' && $product->genre != 'contactlense')
                     <div class="form-example-int form-horizental">
                         <div class="form-group">
                             <div class="row">
@@ -185,6 +186,7 @@ Admin | Product Management: {{ isset($product->productslug) ? 'Edit '.ucfirst($p
                             </div>
                         </div>
                     </div>
+                    @endif
                     <div class="form-example-int form-horizental">
                         <div class="form-group">
                             <div class="row">
@@ -206,6 +208,7 @@ Admin | Product Management: {{ isset($product->productslug) ? 'Edit '.ucfirst($p
                             </div>
                         </div>
                     </div>
+                    @if($product->genre != 'accessories')
                     <div class="form-example-int form-horizental">
                         <div class="form-group">
                             <div class="row">
@@ -227,6 +230,8 @@ Admin | Product Management: {{ isset($product->productslug) ? 'Edit '.ucfirst($p
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @if($product->genre != 'accessories' && $product->genre != 'contactlense')
                     <div class="form-example-int form-horizental">
                         <div class="form-group">
                             <div class="row">
@@ -248,6 +253,7 @@ Admin | Product Management: {{ isset($product->productslug) ? 'Edit '.ucfirst($p
                             </div>
                         </div>
                     </div>
+                    @endif
                     <div class="form-example-int form-horizental">
                         <div class="form-group">
                             <div class="row">

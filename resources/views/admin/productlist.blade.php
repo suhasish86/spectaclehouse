@@ -51,8 +51,8 @@ Admin | Product Management: {{ ucfirst($product->genre) }}list
                                     <th>Sl.No</th>
                                     <th>Name</th>
                                     <th>Brand</th>
-                                    <th>Style</th>
-                                    <th>Material</th>
+                                    @php if($product->genre != 'accessories') echo '<th>Style</th>'; @endphp
+                                    @php if($product->genre != 'accessories' && $product->genre != 'contactlense') echo '<th>Material</th>'; @endphp
                                     <th>Price</th>
                                     <th>Publish</th>
                                     <th>Edit</th>
@@ -67,8 +67,8 @@ Admin | Product Management: {{ ucfirst($product->genre) }}list
                                     <th>Sl.No</th>
                                     <th>Name</th>
                                     <th>Brand</th>
-                                    <th>Style</th>
-                                    <th>Material</th>
+                                    @php if($product->genre != 'accessories') echo '<th>Style</th>'; @endphp
+                                    @php if($product->genre != 'accessories' && $product->genre != 'contactlense') echo '<th>Material</th>'; @endphp
                                     <th>Price</th>
                                     <th>Publish</th>
                                     <th>Edit</th>
