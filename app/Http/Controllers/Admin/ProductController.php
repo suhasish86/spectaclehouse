@@ -7,6 +7,7 @@ use App\Admin\Brand;
 use App\Admin\Style;
 use App\Admin\Material;
 use App\Admin\Product;
+use App\Admin\Inventory;
 use App\Http\Controllers\Controller;
 use App\Traits\ImageHandler;
 use Illuminate\Http\Request;
@@ -255,6 +256,12 @@ class ProductController extends Controller
         }
     }
 
+    public function invent(Product $product){
+        dd($product);
+        // $inventories = $product->inventories()->all();
+        // dd($inventories);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -388,6 +395,14 @@ class ProductController extends Controller
                                      ? \App\Admin\Material::find($product->material)->materialname
                                      : 'Material not found';
 
+                //Check Inventory
+                $inventory = Inventory::where('productid', $product->id)->first();
+                if ($inventory === null) {
+                    $inventoryHtml = '<a href="javascript:void(0);" title="Inventory" id="inventory-'.$product->id.'"><i class="fa fa-bars"></i></a>';
+                } else {
+                    $inventoryHtml = '<a href="'.route('admin.inventorylist', ['productslug' => $product->productslug]).'" title="Inventory"><i class="fa fa-bars"></i></a>';
+                }
+
                 $nestedData = [];
                 $nestedData[] = $key+1;
                 $nestedData[] = $product->productname;
@@ -408,6 +423,7 @@ class ProductController extends Controller
 
 
                 $nestedData[] = $product->price;
+                $nestedData[] = $inventoryHtml;
                 $nestedData[] = '<a href="javascript:void(0);" title="'.$checkText.'" id="publish-'.$product->productslug.'">'.$checkIcon.'</a>';
                 $nestedData[] = '<a href="'.route('admin.editproduct', ['genre' => $product->genre,'product' => $product->productslug]).'" title="Edit Product"><i class="fa fa-edit"></i></a>';
                 $nestedData[] = '<a href="javascript:void(0);" title="Delete Product" id="delete-'.$product->productslug.'"><i class="fa fa-trash"></i></a>';

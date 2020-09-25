@@ -93,6 +93,7 @@
         var fileList = new Array;
         var i = 0;
         $("div#imageUploader").dropzone({
+            acceptedFiles: acceptedFileTypes,
             url: host + 'admin/upload',
             addRemoveLinks: true,
             maxFiles: 1,
@@ -127,6 +128,7 @@
             },
             success: function(file, response) {
                 console.log(response);
+                fileList[file.name] = response.name;
                 $('input#image').val(response.name);
             },
             error: function(file, response) {
@@ -136,15 +138,24 @@
 
         var __removeUpload = function(file) {
             var slug = $('input#facilityslug').val();
-            var target = (slug != '') ? host + 'admin/deletefacilityimage/' + slug : host + 'admin/removeupload';
+            if (file in fileList) {
+                var target = host + 'admin/removeupload';
+                var data = {
+                    'path': 'facilityimage',
+                    'file': fileList[file]
+                };
+            } else {
+                var target = host + 'admin/deletefacilitybanner/' + slug;
+                var data = {
+                    'path': 'facilityimage',
+                    'file': file
+                };
+            }
             $.ajax({
                 url: target,
                 type: "POST",
                 dataType: 'html',
-                data: {
-                    'path': 'facilityimage',
-                    'file': file
-                },
+                data: data,
                 timeout: 20000,
                 cache: false,
                 success: function(responce) {

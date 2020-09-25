@@ -97,6 +97,7 @@ Route::name('admin.')->prefix('admin/')->namespace('Admin')->group(function () {
         Route::post('/deletestylebanner/{style}', 'StyleController@removebanner')->name('deletestylebanner');
 
         //Products manager
+        Route::get('/product/inventory/{product}', 'ProductController@invent')->name('productinventory');
         Route::get('/{genre}/productlist', 'ProductController@index')->name('productlist');
         Route::get('/{genre}/createproduct', 'ProductController@create')->name('createproduct');
         Route::get('/{genre}/editproduct/{product}', 'ProductController@edit')->name('editproduct');
@@ -119,6 +120,28 @@ Route::name('admin.')->prefix('admin/')->namespace('Admin')->group(function () {
         Route::post('/publishfacility/{facility}', 'FacilityController@publish')->name('publishfacility');
         Route::post('/deletefacility/{facility}', 'FacilityController@destroy')->name('deletefacility');
         Route::post('/deletefacilitybanner/{facility}', 'FacilityController@removebanner')->name('deletefacilitybanner');
+
+        //Product Inventory
+        Route::get('/{productslug}/inventorylist', 'InventoryController@index')->name('inventorylist');
+        Route::get('/createinventory/{productid}', 'InventoryController@create')->name('createinventory');
+        Route::get('/editinventory/{inventoryid}', 'InventoryController@edit')->name('editinventory');
+
+        Route::post('/saveinventory', 'InventoryController@store')->name('saveinventory');
+        Route::post('/updateinventory/{inventoryid}', 'InventoryController@update')->name('updateinventory');
+        Route::post('/publishinventory/{inventoryid}', 'InventoryController@publish')->name('publishinventory');
+        Route::post('/deleteinventory/{inventoryid}', 'InventoryController@destroy')->name('deleteinventory');
+
+        Route::post('/inventory/build', 'InventoryController@build')->name('ajax_createinventory');
+        Route::post('/ajax_inventorylist', 'InventoryController@inventoryList')->name('ajax_inventoryList');
+
+        //Product Gallery
+        Route::get('/productgallery/{inventoryid}', 'ProductGalleryController@index')->name('gallerylist');
+
+        Route::post('/publishgallery/{galleryid}', 'ProductGalleryController@publish')->name('publishgallery');
+        Route::post('/deletegallery/{galleryid}', 'ProductGalleryController@destroy')->name('deletegallery');
+        Route::post('/uploadgallery', 'ProductGalleryController@store')->name('ajax_galleryupload');
+        Route::post('/ajax_gallerylist', 'ProductGalleryController@productGalleryList')->name('ajax_galleryList');
+
 
     });
 

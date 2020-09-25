@@ -93,6 +93,7 @@
         var i = 0;
         $("div#bannerUploader").dropzone({
             url: host + 'admin/upload',
+            acceptedFiles: acceptedFileTypes,
             addRemoveLinks: true,
             maxFiles: 1,
             init: function() {
@@ -126,6 +127,7 @@
             },
             success: function(file, response) {
                 console.log(response);
+                fileList[file.name] = response.name;
                 $('input#banner').val(response.name);
             },
             error: function(file, response) {
@@ -135,15 +137,24 @@
 
         var __removeUpload = function(file) {
             var slug = $('input#pageslug').val();
-            var target = (slug != '') ? host + 'admin/deletepagebanner/' + slug : host + 'admin/removeupload';
+            if (file in fileList) {
+                var target = host + 'admin/removeupload';
+                var data = {
+                    'path': 'pagebanner',
+                    'file': fileList[file]
+                };
+            } else {
+                var target = host + 'admin/deletepagebanner/' + slug;
+                var data = {
+                    'path': 'pagebanner',
+                    'file': file
+                };
+            }
             $.ajax({
                 url: target,
                 type: "POST",
                 dataType: 'html',
-                data: {
-                    'path': 'pagebanner',
-                    'file': file
-                },
+                data: data,
                 timeout: 20000,
                 cache: false,
                 success: function(responce) {

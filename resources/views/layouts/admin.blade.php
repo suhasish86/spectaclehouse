@@ -61,11 +61,13 @@
 
     <!-- Custom CSS
     ============================================ -->
-    <link rel="stylesheet" href="{{ asset('adminassets/css/fontawesome/custom.admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminassets/css/custom.admin.css') }}">
 
     <!-- modernizr JS
     ============================================ -->
     <script src="{{ asset('adminassets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+
+    @yield('page_styles')
 </head>
 
 <body>

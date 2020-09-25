@@ -181,7 +181,7 @@ class FacilityController extends Controller
      * @param  \App\Admin\Facility  $facility
      * @return \Illuminate\Http\Response
      */
-    public function removeimage(Facility $facility)
+    public function removebanner(Facility $facility)
     {
         if($facility->image != ''){
             $image = $this->load_image('facilityimage/'.$facility->image);

@@ -1,0 +1,12 @@
+.dot {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.gallery_image {
+    height: 50px;
+    border-radius: 20%;
+    display: inline-block;
+}

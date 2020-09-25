@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="{{ asset('adminassets/css/datapicker/datepicker3.css') }}">
 <!-- Color Picker CSS
 ============================================ -->
-<link rel="stylesheet" href="{{ asset('adminassets/css/color-picker/farbtastic.css') }}">
+<link rel="stylesheet" href="{{ asset('adminassets/css/color-picker/spectrum.css') }}">
 <!-- main CSS
 ============================================ -->
 <link rel="stylesheet" href="{{ asset('adminassets/css/chosen/chosen.css') }}">
@@ -35,8 +35,7 @@
 <script src="{{ asset('adminassets/js/bootstrap-select/bootstrap-select.js') }}"></script>
 <!--  color-picker JS
 ============================================ -->
-<script src="{{ asset('adminassets/js/color-picker/farbtastic.min.js') }}"></script>
-<script src="{{ asset('adminassets/js/color-picker/color-picker.js') }}"></script>
+<script src="{{ asset('adminassets/js/color-picker/spectrum.js') }}"></script>
 <!--  summernote JS
 ============================================ -->
 <script src="{{ asset('adminassets/js/summernote/summernote-updated.min.js') }}"></script>

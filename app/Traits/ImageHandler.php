@@ -32,4 +32,8 @@ trait ImageHandler
     {
         return Storage::delete($this->storage_path);
     }
+
+    public function resize_image_save($width, $height, $path){
+
+    }
 }

@@ -147,12 +147,12 @@ Admin | Product Management: {{ isset($product->productslug) ? 'Edit '.ucfirst($p
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
                                     <div class="nk-int-st">
-                                        <input type="text" name="specname[]" id="specname-1" class="form-control input-sm" placeholder="Specification title" value="{{ isset($product->metadescription) ? $product->metadescription : '' }}">
+                                        <input type="text" name="specname[]" id="specname-1" class="form-control input-sm" placeholder="Specification title" value="">
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-3 col-sm-3 col-xs-6">
                                     <div class="nk-int-st">
-                                        <input type="text" name="specification[]" id="specification-1" class="form-control input-sm" placeholder="Specification of your product" value="{{ isset($product->metadescription) ? $product->metadescription : '' }}">
+                                        <input type="text" name="specification[]" id="specification-1" class="form-control input-sm" placeholder="Specification of your product" value="">
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">

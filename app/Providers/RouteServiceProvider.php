@@ -63,6 +63,14 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Admin\Facility::where('id', $value)->orWhere('facilityslug', $value)->first();
         });
 
+        Route::bind('inventoryid', function($value) {
+            return \App\Admin\Inventory::where('id', base64_decode($value))->orWhere('id', $value)->first();
+        });
+
+        Route::bind('galleryid', function($value) {
+            return \App\Admin\ProductGallery::where('id', base64_decode($value))->orWhere('id', $value)->first();
+        });
+
     }
 
     /**
