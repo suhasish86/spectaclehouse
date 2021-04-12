@@ -2,7 +2,6 @@
 
 @section('page-content-area')
 
-{{ dd($navList) }}
 <!---------------------- Category Start ---------------------------->
 <section class="p-5">
     <div class="container">
