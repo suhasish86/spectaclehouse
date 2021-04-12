@@ -77,7 +77,7 @@
 <!---------------------- Header End ---------------------------->
 
 
-{{-- <!-- Banner Content Area
+<!-- Banner Content Area
 ============================================ -->
 @yield('banner-content-area')
 <!-- Banner Content Area End ------------------->
@@ -86,7 +86,7 @@
 <!-- Page Content Area
 ============================================ -->
 @yield('page-content-area')
-<!-- Page Content Area End -------------------> --}}
+<!-- Page Content Area End ------------------->
 
 
 
