@@ -136,7 +136,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $inventories = $product->inventories()->find(2)->galleries;
+        $gallery = Inventory::find(2)->galleries;
+        dd($inventories);
     }
 
     /**
@@ -256,11 +258,6 @@ class ProductController extends Controller
         }
     }
 
-    public function invent(Product $product){
-        dd($product);
-        // $inventories = $product->inventories()->all();
-        // dd($inventories);
-    }
 
     /**
      * Remove the specified resource from storage.

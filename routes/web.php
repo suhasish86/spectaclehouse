@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'HomeController@index');
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
 
 // All admin routes
 
@@ -97,7 +99,7 @@ Route::name('admin.')->prefix('admin/')->namespace('Admin')->group(function () {
         Route::post('/deletestylebanner/{style}', 'StyleController@removebanner')->name('deletestylebanner');
 
         //Products manager
-        Route::get('/product/inventory/{product}', 'ProductController@invent')->name('productinventory');
+        Route::get('/product/inventory/{product}', 'ProductController@show')->name('productinventory');
         Route::get('/{genre}/productlist', 'ProductController@index')->name('productlist');
         Route::get('/{genre}/createproduct', 'ProductController@create')->name('createproduct');
         Route::get('/{genre}/editproduct/{product}', 'ProductController@edit')->name('editproduct');
