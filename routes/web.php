@@ -14,15 +14,11 @@ use Illuminate\Support\Facades\Auth;
 |
  */
 
-Route::get('/', function(){
-    echo 'hi';
-});
+Route::get('/', 'HomeController@index');
 
 
 
-Route::get('/home', function(){
-    echo 'hi';
-})->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
