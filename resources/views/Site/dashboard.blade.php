@@ -2,7 +2,7 @@
 
 @section('page-content-area')
 
-<!---------------------- Category Start ---------------------------->
+{{-- <!---------------------- Category Start ---------------------------->
 <section class="p-5">
     <div class="container">
         <div class="d-flex  justify-content-center">
@@ -248,7 +248,7 @@
         </div>
     </div>
 </section>
-<!---------------------- Brand End ---------------------------->
+<!---------------------- Brand End ----------------------------> --}}
 
 
 @endsection
