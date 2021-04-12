@@ -31,6 +31,6 @@ class NavComposer
      */
     public function compose(View $view)
     {
-        $view->with('navList', $this->navList);
+        // $view->with('navList', $this->navList);
     }
 }
