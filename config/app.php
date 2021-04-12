@@ -180,7 +180,7 @@ return [
         /*
          * ViewComposer Service Providers...
          */
-        App\Providers\ComposerServiceProvider::class,
+        // App\Providers\ComposerServiceProvider::class,
 
     ],
 
