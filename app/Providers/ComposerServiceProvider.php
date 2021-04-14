@@ -25,7 +25,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer(
-            'site.dashboard',
+            'layouts.site',
             'App\Http\ViewComposers\NavComposer'
         );
         // View::composer(

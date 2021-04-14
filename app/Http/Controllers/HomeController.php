@@ -58,7 +58,8 @@ class HomeController extends Controller
                     break;
                 case 'eye-clinic':
                     $eye_clinic = $this->facility->get_facility('eyeclinic');
-                    return view('site.eye-clinic');
+                    // dd($eye_clinic);
+                    return view('site.eyeclinic', compact('eye_clinic'));
                     break;
                 case 'services':
                     return view('site.services');

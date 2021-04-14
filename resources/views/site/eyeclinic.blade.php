@@ -14,15 +14,15 @@
         @foreach($eye_clinic as $facility)
             <div class="row align-items-center mb-5">
                 <div class="col-md-6" {{ (($loop->iteration%2) == 0) ? 'order-md-2' : '' }}>
-                    <div class="mb-2"><img src="img/services.png" alt=""></div>
+                    <div class="mb-2"><img src="{{ asset('siteassets/img/lservices.png') }}" alt=""></div>
                 </div>
                 <div class="col-md-6 {{ (($loop->iteration%2) == 0) ? 'order-md-1' : '' }}">
-                    <h4>{{ $facilty->facilityname }}</h4>
+                    <h4>{{ $facility->facilityname }}</h4>
                     {{ $facility->description }}
                 </div>
             </div>
         @endforeach
-      @endif
+    @endif
 
     </div>
   </section>
