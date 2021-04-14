@@ -14,24 +14,22 @@
         <div class="col-md-6">
           <div class="proDetailsImg">
             <div id="slider" class="flexslider">
-            <ul class="slides">
-              <li><img src="{{ asset('siteassets/img/sliderimg.jpg') }}" /></li>
-              <li><img src="{{ asset('siteassets/img/sliderimg.jpg') }}" /></li>
-              <li><img src="{{ asset('siteassets/img/sliderimg.jpg') }}" /></li>
-              <li><img src="{{ asset('siteassets/img/sliderimg.jpg') }}" /></li>
-              <li><img src="{{ asset('siteassets/img/sliderimg.jpg') }}" /></li>
-              <li><img src="{{ asset('siteassets/img/sliderimg.jpg') }}" /></li>
-            </ul>
+                @if (!empty($product->galleries))
+                <ul class="slides">
+                    @foreach ($product->galleries as $gallery)
+                    <li><img src="{{ $gallery->image }}" /></li>
+                    @endforeach
+                </ul>
+                @endif
           </div>
           <div id="carousel" class="flexslider">
+            @if (!empty($product->galleries))
             <ul class="slides">
-              <li><img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" /></li>
-              <li><img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" /></li>
-              <li><img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" /></li>
-              <li><img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" /></li>
-              <li><img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" /></li>
-              <li><img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" /></li>
+                @foreach ($product->galleries as $gallery)
+                <li><img src="{{ $gallery->image }}" /></li>
+                @endforeach
             </ul>
+            @endif
           </div>
           </div>
         </div>
@@ -39,23 +37,23 @@
         <div class="col-md-6">
           <div class="proDetails">
             <div class="mb-3">
-          <h3 class="productTitle">Vincent Chase Polarized</h3>
-          <h4 class="detailsPrice"><span class="text-primary">₹</span> 1100</h4>
+          <h3 class="productTitle">{{ $product->productname}}</h3>
+          <h4 class="detailsPrice"><span class="text-primary">₹</span> {{ $product->price}}</h4>
         </div>
         <div class="mb-2">
           <h5>Color</h5>
           <div class="colorImg">
+            @if (!empty($product->inventories))
             <ul>
-              <li style="background-color: black;"></li>
-              <li style="background-color: blueviolet;" class="active"></li>
-              <li style="background-color: chocolate;"></li>
-              <li style="background-color: blanchedalmond;"></li>
-              <li style="background-color:cadetblue;"></li>
+                @foreach ($product->inventories as $inventory)
+                <li style="background-color: {{ $inventory->color }};"></li>
+                @endforeach
             </ul>
+            @endif
           </div>
         </div>
 
-        <div class="mb-2">
+        {{-- <div class="mb-2">
           <h5>Quantity</h5>
           <div class="quaField">
             <input type="text" class="form-control" name="" id="">
@@ -64,24 +62,16 @@
         <div class="mb-3">
           <a href="cart.html" class="btn btn-lg btn-info">Add to Cart</a>
           <a href="cart.html" class="btn btn-lg btn-primary">Buy Now</a>
-        </div>
+        </div> --}}
 
         <div class="descriptionBox">
           <h4>Description</h4>
+          {!! $product->description !!}
           <dl>
-            <dt>Material</dt>
-            <dd>TR90 (Flexible Light-Weight)</dd>
-            <dt>Frame Style</dt>
-            <dd>Standard</dd>
-            <dt>Gender</dt>
-            <dd>Unisex</dd>
-            <dt>Frame Dimensions</dt>
-            <dd>49-19-140 mm</dd>
-            <dt>Frame Width</dt>
-            <dd>134 mm</dd>
-            <dt>Frame colour</dt>
-            <dd>Grey Transparent</dd>
-          </dl>
+          @foreach ($product->specification as $specname=>$specvalue)
+          <dt>{{ $specname }}</dt>
+          <dd>{{ $specvalue }}</dd>
+          @endforeach
         </div>
 
         </div>
