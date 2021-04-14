@@ -1,5 +1,9 @@
 @extends('layouts.site')
 
+@section('banner-content-area)
+@include('site.partials.banner')
+@endsection
+
 @section('page-content-area')
 
 <!---------------------- Category Start ---------------------------->
