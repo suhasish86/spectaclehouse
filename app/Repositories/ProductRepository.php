@@ -51,16 +51,17 @@ class ProductRepository implements ProductRepositoryInterface
         return $newest_arrival;
     }
 
-    public function get_genre_trending($genre = false){
-        if($genre){
-            $newest_arrival = Product::where('status', 1)
-            ->where('genre', $genre)
-            ->orderBy('created_at', 'desc')
-            ->limit(4)
-            ->has('galleries')
-            ->with('galleries')
-            ->get();
-            foreach ($newest_arrival as $product) {
+    public function get_genre_trending($genre = false)
+    {
+        if ($genre) {
+            $trending = Product::where('status', 1)
+                ->where('genre', $genre)
+                ->orderBy('created_at', 'desc')
+                ->limit(4)
+                ->has('galleries')
+                ->with('galleries')
+                ->get();
+            foreach ($trending as $product) {
                 $gallery = $product->galleries;
                 $cnt = 1;
                 foreach ($product->galleries as $image) {
@@ -71,19 +72,21 @@ class ProductRepository implements ProductRepositoryInterface
                     $cnt++;
                 }
             }
+            return $trending;
         }
         return false;
     }
 
-    public function get_genre_collection($genre = false){
-        if($genre){
-            $newest_arrival = Product::where('status', 1)
-            ->where('genre', $genre)
-            ->limit(3)
-            ->has('galleries')
-            ->with('galleries')
-            ->get();
-            foreach ($newest_arrival as $product) {
+    public function get_genre_collection($genre = false)
+    {
+        if ($genre) {
+            $collection = Product::where('status', 1)
+                ->where('genre', $genre)
+                ->limit(3)
+                ->has('galleries')
+                ->with('galleries')
+                ->get();
+            foreach ($collection as $product) {
                 $gallery = $product->galleries;
                 $cnt = 1;
                 foreach ($product->galleries as $image) {
@@ -94,19 +97,21 @@ class ProductRepository implements ProductRepositoryInterface
                     $cnt++;
                 }
             }
+            return $collection;
         }
         return false;
     }
 
-    public function get_genre_best_deals($genre = false){
-        if($genre){
-            $newest_arrival = Product::where('status', 1)
-            ->where('genre', $genre)
-            ->limit(4)
-            ->has('galleries')
-            ->with('galleries')
-            ->get();
-            foreach ($newest_arrival as $product) {
+    public function get_genre_best_deals($genre = false)
+    {
+        if ($genre) {
+            $best_deals = Product::where('status', 1)
+                ->where('genre', $genre)
+                ->limit(4)
+                ->has('galleries')
+                ->with('galleries')
+                ->get();
+            foreach ($best_deals as $product) {
                 $gallery = $product->galleries;
                 $cnt = 1;
                 foreach ($product->galleries as $image) {
@@ -117,19 +122,21 @@ class ProductRepository implements ProductRepositoryInterface
                     $cnt++;
                 }
             }
+            return $best_deals;
         }
         return false;
     }
 
-    public function get_genre_newest($genre = false){
-        if($genre){
+    public function get_genre_newest($genre = false)
+    {
+        if ($genre) {
             $newest_arrival = Product::where('status', 1)
-            ->where('genre', $genre)
-            ->orderBy('created_at', 'desc')
-            ->limit(4)
-            ->has('galleries')
-            ->with('galleries')
-            ->get();
+                ->where('genre', $genre)
+                ->orderBy('created_at', 'desc')
+                ->limit(4)
+                ->has('galleries')
+                ->with('galleries')
+                ->get();
             foreach ($newest_arrival as $product) {
                 $gallery = $product->galleries;
                 $cnt = 1;
@@ -141,6 +148,7 @@ class ProductRepository implements ProductRepositoryInterface
                     $cnt++;
                 }
             }
+            return $newest_arrival;
         }
         return false;
     }
