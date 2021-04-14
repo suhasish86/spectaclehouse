@@ -5,20 +5,23 @@ namespace App\Http\Controllers;
 use App\Admin\Brand;
 use App\Admin\Page;
 use App\Admin\Product;
-
+use App\Repositories\Interfaces\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+
+    private $product;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ProductRepositoryInterface $product)
     {
         $this->middleware('guest');
+        $this->product = $product;
     }
 
     /**
@@ -29,28 +32,8 @@ class HomeController extends Controller
     public function index()
     {
         $our_brands = Brand::where('status', 1)->get();
-        $our_collection = Product::where('status', 1)->limit(6)->with('galleries')->get();
-        $newest_arrival = Product::where('status', 1)->orderBy('created_at', 'desc')->limit(9)->with('galleries')->get();
-
-        foreach($our_collection as $product){
-            $gallery = $product->galleries;
-            $cnt = 1;
-            foreach($product->galleries as $image){
-                if($cnt == 1)
-                $product->image = '/storage/uploads/gallery/'.$product->genre.'/'.$image->image;
-                $cnt++;
-            }
-        }
-
-        foreach($newest_arrival as $product){
-            $gallery = $product->galleries;
-            $cnt = 1;
-            foreach($product->galleries as $image){
-                if($cnt == 1)
-                $product->image = '/storage/uploads/gallery/'.$product->genre.'/'.$image->image;
-                $cnt++;
-            }
-        }
+        $our_collection = $this->product->get_collection();
+        $newest_arrival = $this->product->get_newest();
 
         return view('site.dashboard', compact('our_brands', 'our_collection', 'newest_arrival'));
     }

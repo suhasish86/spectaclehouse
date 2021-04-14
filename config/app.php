@@ -182,6 +182,11 @@ return [
          */
         App\Providers\ComposerServiceProvider::class,
 
+        /*
+         * Repository Service Providers...
+         */
+        App\Providers\RepositoryServiceProvider::class,
+
     ],
 
     /*
