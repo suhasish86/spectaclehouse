@@ -58,14 +58,14 @@ class HomeController extends Controller
                     $trending = $this->product->get_genre_trending('frame');
                     $newest = $this->product->get_genre_collection('frame');
                     $best_deal = $this->product->get_genre_best_deals('frame');
-                    return view('site.productlist', compact('collection', 'trending', 'newest'));
+                    return view('site.productlist', compact('collection', 'trending', 'newest', 'best_deal'));
                     break;
                 case 'sunglasses':
                     $collection = $this->product->get_genre_collection('sunglass');
                     $trending = $this->product->get_genre_trending('sunglass');
                     $newest = $this->product->get_genre_collection('sunglass');
                     $best_deal = $this->product->get_genre_best_deals('sunglass');
-                    return view('site.productlist', compact('collection', 'trending', 'newest'));
+                    return view('site.productlist', compact('collection', 'trending', 'newest', 'best_deal'));
                     break;
                 case 'eye-clinic':
                     $eye_clinic = $this->facility->get_facility('eyeclinic');
