@@ -6,6 +6,18 @@ use App\Repositories\Interfaces\ProductRepositoryInterface;
 
 class ProductRepository implements ProductRepositoryInterface
 {
+    public function get_details($productid = false)
+    {
+        if ($productid) {
+            $product = Product::find($productid)
+                ->with('inventories')
+                ->with('galleries')
+                ->get();
+            return $product;
+        }
+        return false;
+    }
+
     public function get_collection()
     {
         $our_collection = Product::where('status', 1)

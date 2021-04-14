@@ -44,7 +44,7 @@
             <div class="loop owl-carousel owl-theme">
                 @foreach($our_collection as $product)
                 <div class="item">
-                    <a href="product-details.html">
+                    <a href="{{ route('product_details', ['product'=>$product->productslug])}}">
                         <img src="{{ $product->image }}" alt="">
                     </a>
                 </div>

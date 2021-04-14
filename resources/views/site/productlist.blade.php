@@ -36,11 +36,11 @@
             @foreach ($trending as $product)
             <div class="item">
                 <div class="proBox">
-                  <div class="proBoxImg"><a href="product-details.html"><img src="{{ $product->image }}" alt=""></a></div>
+                  <div class="proBoxImg"><a href="{{ route('product_details', ['product'=>$product->productslug])}}"><img src="{{ $product->image }}" alt=""></a></div>
                   <div class="proBoxDes">
                     <h4>{{ $product->productname }}</h4>
                     <h5>₹ {{ $product->price }}</h5>
-                    <a href="product-details.html" class="btn btn-info">View Now</a>
+                    <a href="{{ route('product_details', ['product'=>$product->productslug])}}" class="btn btn-info">View Now</a>
                   </div>
                 </div>
               </div>
@@ -66,11 +66,11 @@
             @foreach ($newest as $product)
             <div class="item">
                 <div class="proBox">
-                  <div class="proBoxImg"><a href="product-details.html"><img src="{{ $product->image }}" alt=""></a></div>
+                  <div class="proBoxImg"><a href="{{ route('product_details', ['product'=>$product->productslug])}}"><img src="{{ $product->image }}" alt=""></a></div>
                   <div class="proBoxDes">
                     <h4>{{ $product->productname }}</h4>
                     <h5>₹ {{ $product->price }}</h5>
-                    <a href="product-details.html" class="btn btn-info">View Now</a>
+                    <a href="{{ route('product_details', ['product'=>$product->productslug])}}" class="btn btn-info">View Now</a>
                   </div>
                 </div>
               </div>
@@ -94,11 +94,11 @@
             @foreach ($best_deal as $product)
             <div class="item">
                 <div class="proBox">
-                  <div class="proBoxImg"><a href="product-details.html"><img src="{{ $product->image }}" alt=""></a></div>
+                  <div class="proBoxImg"><a href="{{ route('product_details', ['product'=>$product->productslug])}}"><img src="{{ $product->image }}" alt=""></a></div>
                   <div class="proBoxDes">
                     <h4>{{ $product->productname }}</h4>
                     <h5>₹ {{ $product->price }}</h5>
-                    <a href="product-details.html" class="btn btn-info">View Now</a>
+                    <a href="{{ route('product_details', ['product'=>$product->productslug])}}" class="btn btn-info">View Now</a>
                   </div>
                 </div>
               </div>

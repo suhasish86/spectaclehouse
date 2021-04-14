@@ -45,6 +45,18 @@ class HomeController extends Controller
 
 
     /**
+     * Show the product details.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function show(Product $product)
+    {
+        $product = $this->product->get_details($product->id);
+        return view('site.product-details', compact('product'));
+    }
+
+
+    /**
      * Navigate Application
      *
      * @return \Illuminate\Contracts\Support\Renderable
