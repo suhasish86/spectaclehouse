@@ -29,8 +29,8 @@ class HomeController extends Controller
     public function index()
     {
         $our_brands = Brand::where('status', 1)->get();
-        $our_collection = Product::where('status', 1)->limit(10)->with('galleries')->get();
-        $newest_arrival = Product::where('status', 1)->orderBy('created_at', 'desc')->limit(6)->with('galleries')->get();
+        $our_collection = Product::where('status', 1)->limit(6)->with('galleries')->get();
+        $newest_arrival = Product::where('status', 1)->orderBy('created_at', 'desc')->limit(9)->with('galleries')->get();
 
         foreach($our_collection as $product){
             $gallery = $product->galleries;

@@ -106,7 +106,7 @@
                     <div class="proBoxImg">
                         <a href="product-details.html">
 
-                            <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
+                            <img src="{{ $product->image }}" alt="">
                         </a>
                     </div>
                     <div class="proBoxDes">
