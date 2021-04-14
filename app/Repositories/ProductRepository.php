@@ -9,7 +9,7 @@ class ProductRepository implements ProductRepositoryInterface
     public function get_details($productid = false)
     {
         if ($productid) {
-            $product = Product::find($productid)
+            $product = Product::where('id', $productid)
                 ->with('inventories')
                 ->with('galleries')
                 ->get();
