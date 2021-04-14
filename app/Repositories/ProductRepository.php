@@ -10,6 +10,7 @@ class ProductRepository implements ProductRepositoryInterface
     {
         if ($productid) {
             $product = Product::where('id', $productid)
+                ->first()
                 ->with('inventories')
                 ->with('galleries')
                 ->get();
