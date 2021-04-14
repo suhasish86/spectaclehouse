@@ -50,4 +50,98 @@ class ProductRepository implements ProductRepositoryInterface
         }
         return $newest_arrival;
     }
+
+    public function get_genre_trending($genre = false){
+        if($genre){
+            $newest_arrival = Product::where('status', 1)
+            ->where('genre', $genre)
+            ->orderBy('created_at', 'desc')
+            ->limit(4)
+            ->has('galleries')
+            ->with('galleries')
+            ->get();
+            foreach ($newest_arrival as $product) {
+                $gallery = $product->galleries;
+                $cnt = 1;
+                foreach ($product->galleries as $image) {
+                    if ($cnt == 1) {
+                        $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+                    }
+
+                    $cnt++;
+                }
+            }
+        }
+        return false;
+    }
+
+    public function get_genre_collection($genre = false){
+        if($genre){
+            $newest_arrival = Product::where('status', 1)
+            ->where('genre', $genre)
+            ->limit(3)
+            ->has('galleries')
+            ->with('galleries')
+            ->get();
+            foreach ($newest_arrival as $product) {
+                $gallery = $product->galleries;
+                $cnt = 1;
+                foreach ($product->galleries as $image) {
+                    if ($cnt == 1) {
+                        $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+                    }
+
+                    $cnt++;
+                }
+            }
+        }
+        return false;
+    }
+
+    public function get_genre_best_deals($genre = false){
+        if($genre){
+            $newest_arrival = Product::where('status', 1)
+            ->where('genre', $genre)
+            ->limit(4)
+            ->has('galleries')
+            ->with('galleries')
+            ->get();
+            foreach ($newest_arrival as $product) {
+                $gallery = $product->galleries;
+                $cnt = 1;
+                foreach ($product->galleries as $image) {
+                    if ($cnt == 1) {
+                        $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+                    }
+
+                    $cnt++;
+                }
+            }
+        }
+        return false;
+    }
+
+    public function get_genre_newest($genre = false){
+        if($genre){
+            $newest_arrival = Product::where('status', 1)
+            ->where('genre', $genre)
+            ->orderBy('created_at', 'desc')
+            ->limit(4)
+            ->has('galleries')
+            ->with('galleries')
+            ->get();
+            foreach ($newest_arrival as $product) {
+                $gallery = $product->galleries;
+                $cnt = 1;
+                foreach ($product->galleries as $image) {
+                    if ($cnt == 1) {
+                        $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+                    }
+
+                    $cnt++;
+                }
+            }
+        }
+        return false;
+    }
 }

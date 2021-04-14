@@ -54,7 +54,18 @@ class HomeController extends Controller
         if(isset($page->pageslug)){
             switch($page->pageslug){
                 case 'frames':
-                    return view('site.dashboard');
+                    $collection = $this->product->get_genre_collection('frame');
+                    $trending = $this->product->get_genre_trending('frame');
+                    $newest = $this->product->get_genre_collection('frame');
+                    $best_deal = $this->product->get_genre_best_deals('frame');
+                    return view('site.productlist', compact('collection', 'trending', 'newest'));
+                    break;
+                case 'sunglasses':
+                    $collection = $this->product->get_genre_collection('sunglass');
+                    $trending = $this->product->get_genre_trending('sunglass');
+                    $newest = $this->product->get_genre_collection('sunglass');
+                    $best_deal = $this->product->get_genre_best_deals('sunglass');
+                    return view('site.productlist', compact('collection', 'trending', 'newest'));
                     break;
                 case 'eye-clinic':
                     $eye_clinic = $this->facility->get_facility('eyeclinic');
