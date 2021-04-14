@@ -109,14 +109,12 @@
                 <div class="proBox">
                     <div class="proBoxImg">
                         <a href="product-details.html">
-
                             <img src="{{ $product->image }}" alt="">
-                            {{-- <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt=""> --}}
                         </a>
                     </div>
                     <div class="proBoxDes">
                         <h4>{{ $product->productname}}</h4>
-                        <h5>{{ $product->price }}</h5>
+                        <h5><i class="lni lni-rupee"></i> {{ $product->price }}</h5>
                         <a href="product-details.html" class="btn btn-info">Buy Now</a>
                     </div>
                 </div>
