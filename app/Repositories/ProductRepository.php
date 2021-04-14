@@ -30,7 +30,7 @@ class ProductRepository implements ProductRepositoryInterface
     public function get_newest()
     {
         $newest_arrival = Product::where('status', 1)
-            ->whereIn('genre', ['frames', 'sunglass'])
+            // ->whereIn('genre', ['frames', 'sunglass'])
             ->orderBy('created_at', 'desc')
             // ->limit(9)
             // ->with('galleries')
