@@ -37,7 +37,7 @@
         <div class="col-md-6">
           <div class="proDetails">
             <div class="mb-3">
-          <h3 class="productTitle">{{ $product->productname }}</h3>
+          {{-- <h3 class="productTitle">{{ $product->productname }}</h3> --}}
           <h4 class="detailsPrice"><span class="text-primary">₹</span> {{ $product->price}}</h4>
         </div>
         <div class="mb-2">
