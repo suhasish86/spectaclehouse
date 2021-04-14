@@ -25,7 +25,7 @@
 <!---------------------- Header End ---------------------------->
   <header id="sticky">
     <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="index.html"><img src="{{ asset('siteassets/img/logo.png') }}" alt=""></a>
+      <a class="navbar-brand" href="{{ route('/') }}"><img src="{{ asset('siteassets/img/logo.png') }}" alt=""></a>
       <div class="blankSpace d-lg-none"></div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <i class="lni lni-menu"></i>
@@ -35,7 +35,7 @@
 
         <ul class="navbar-nav">
             @foreach ($navList as $navigation)
-                <a class="nav-link" href="{{ route('page_nav', ['page' => $navigation->pageslug])}}" href="category-frames.html">{{ $navigation->pagename }}</a>
+                <a class="nav-link" href="{{ route('page_nav', ['page' => $navigation->pageslug])}}">{{ $navigation->pagename }}</a>
             @endforeach
         </ul>
       </div>
@@ -83,7 +83,7 @@
    <div class="container text-center">
      <div class="footerLinks">
        <ul>
-         <li><a href="index.html">Home</a></li>
+         <li><a href="{{ route('/') }}">Home</a></li>
          <li><a href="javascript:void(0)">Our Story</a></li>
          <li><a href="contact.html">Contact</a></li>
        </ul>
