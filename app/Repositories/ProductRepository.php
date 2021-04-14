@@ -9,7 +9,7 @@ class ProductRepository implements ProductRepositoryInterface
     public function get_collection()
     {
         $our_collection = Product::where('status', 1)
-            ->whereIn('genre', ['frames', 'sunglass'])
+            ->whereIn('genre', ['frame', 'sunglass'])
             ->limit(6)
             ->with('galleries')
             ->get();
@@ -30,22 +30,22 @@ class ProductRepository implements ProductRepositoryInterface
     public function get_newest()
     {
         $newest_arrival = Product::where('status', 1)
-            // ->whereIn('genre', ['frames', 'sunglass'])
+            ->whereIn('genre', ['frame', 'sunglass'])
             ->orderBy('created_at', 'desc')
-            // ->limit(9)
-            // ->with('galleries')
+            ->limit(9)
+            ->with('galleries')
             ->get();
-        // foreach ($newest_arrival as $product) {
-        //     $gallery = $product->galleries;
-        //     $cnt = 1;
-        //     foreach ($product->galleries as $image) {
-        //         if ($cnt == 1) {
-        //             $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
-        //         }
+        foreach ($newest_arrival as $product) {
+            $gallery = $product->galleries;
+            $cnt = 1;
+            foreach ($product->galleries as $image) {
+                if ($cnt == 1) {
+                    $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+                }
 
-        //         $cnt++;
-        //     }
-        // }
+                $cnt++;
+            }
+        }
         return $newest_arrival;
     }
 }

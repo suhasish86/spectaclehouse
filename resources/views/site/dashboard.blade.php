@@ -110,8 +110,8 @@
                     <div class="proBoxImg">
                         <a href="product-details.html">
 
-                            {{-- <img src="{{ $product->image }}" alt=""> --}}
-                            <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
+                            <img src="{{ $product->image }}" alt="">
+                            {{-- <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt=""> --}}
                         </a>
                     </div>
                     <div class="proBoxDes">
