@@ -40,7 +40,7 @@
                   <div class="proBoxDes">
                     <h4>{{ $product->productname }}</h4>
                     <h5>₹ {{ $product->price }}</h5>
-                    <a href="product-details.html" class="btn btn-info">Buy Now</a>
+                    <a href="product-details.html" class="btn btn-info">View Now</a>
                   </div>
                 </div>
               </div>
@@ -70,7 +70,7 @@
                   <div class="proBoxDes">
                     <h4>{{ $product->productname }}</h4>
                     <h5>₹ {{ $product->price }}</h5>
-                    <a href="product-details.html" class="btn btn-info">Buy Now</a>
+                    <a href="product-details.html" class="btn btn-info">View Now</a>
                   </div>
                 </div>
               </div>
@@ -98,7 +98,7 @@
                   <div class="proBoxDes">
                     <h4>{{ $product->productname }}</h4>
                     <h5>₹ {{ $product->price }}</h5>
-                    <a href="product-details.html" class="btn btn-info">Buy Now</a>
+                    <a href="product-details.html" class="btn btn-info">View Now</a>
                   </div>
                 </div>
               </div>
