@@ -1,6 +1,6 @@
 @extends('layouts.site')
 
-@section('banner-content-area)
+@section('banner-content-area')
 @include('site.partials.banner')
 @endsection
 
