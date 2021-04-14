@@ -37,7 +37,7 @@ class HomeController extends Controller
             $cnt = 1;
             foreach($product->galleries as $image){
                 if($cnt == 1)
-                $product->image = '/storage/uploads/gallery/'.$product->genre.'/'.$image;
+                $product->image = '/storage/uploads/gallery/'.$product->genre.'/'.$image->image;
                 $cnt++;
             }
         }
@@ -47,7 +47,7 @@ class HomeController extends Controller
             $cnt = 1;
             foreach($product->galleries as $image){
                 if($cnt == 1)
-                $product->image = '/storage/uploads/gallery/'.$product->genre.'/'.$image;
+                $product->image = '/storage/uploads/gallery/'.$product->genre.'/'.$image->image;
                 $cnt++;
             }
         }
