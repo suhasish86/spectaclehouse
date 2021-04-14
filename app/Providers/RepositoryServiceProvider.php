@@ -18,6 +18,11 @@ class RepositoryServiceProvider extends ServiceProvider
             ProductRepositoryInterface::class,
             ProductRepository::class
         );
+
+        $this->app->bind(
+            FacilityRepositoryInterface::class,
+            FacilityRepository::class
+        );
     }
 
     /**
