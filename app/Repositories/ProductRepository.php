@@ -2,6 +2,8 @@
 namespace App\Repositories;
 
 use App\Admin\Product;
+use App\Admin\Inventory;
+use App\Admin\ProductGallery;
 use App\Repositories\Interfaces\ProductRepositoryInterface;
 
 class ProductRepository implements ProductRepositoryInterface
@@ -9,11 +11,9 @@ class ProductRepository implements ProductRepositoryInterface
     public function get_details($productid = false)
     {
         if ($productid) {
-            $product = Product::where('id', $productid)
-                ->first()
-                ->with('inventories')
-                ->with('galleries')
-                ->get();
+            $product = Product::where('id', $productid)->first()->get();
+            $product->galleries = ProductGallery::where('productid', $product->id)->get();
+            $product->inventories = Inventory::where('productid', $product->id)->get();
 
             // foreach ($product->galleries as $image) {
             //     $image->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
