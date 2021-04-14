@@ -37,7 +37,7 @@ class ProductRepository implements ProductRepositoryInterface
             $cnt = 1;
             foreach ($product->galleries as $image) {
                 if ($cnt == 1) {
-                    $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+                    $product->image = asset('/storage/uploads/gallery/' . $product->genre . '/' . $image->image);
                 }
 
                 $cnt++;
@@ -60,7 +60,7 @@ class ProductRepository implements ProductRepositoryInterface
             $cnt = 1;
             foreach ($product->galleries as $image) {
                 if ($cnt == 1) {
-                    $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+                    $product->image = asset('/storage/uploads/gallery/' . $product->genre . '/' . $image->image);
                 }
 
                 $cnt++;
@@ -84,7 +84,7 @@ class ProductRepository implements ProductRepositoryInterface
                 $cnt = 1;
                 foreach ($product->galleries as $image) {
                     if ($cnt == 1) {
-                        $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+                        $product->image = asset('/storage/uploads/gallery/' . $product->genre . '/' . $image->image);
                     }
 
                     $cnt++;
@@ -109,7 +109,7 @@ class ProductRepository implements ProductRepositoryInterface
                 $cnt = 1;
                 foreach ($product->galleries as $image) {
                     if ($cnt == 1) {
-                        $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+                        $product->image = asset('/storage/uploads/gallery/' . $product->genre . '/' . $image->image);
                     }
 
                     $cnt++;
@@ -134,7 +134,7 @@ class ProductRepository implements ProductRepositoryInterface
                 $cnt = 1;
                 foreach ($product->galleries as $image) {
                     if ($cnt == 1) {
-                        $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+                        $product->image = asset('/storage/uploads/gallery/' . $product->genre . '/' . $image->image);
                     }
 
                     $cnt++;
@@ -160,7 +160,7 @@ class ProductRepository implements ProductRepositoryInterface
                 $cnt = 1;
                 foreach ($product->galleries as $image) {
                     if ($cnt == 1) {
-                        $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+                        $product->image = asset('/storage/uploads/gallery/' . $product->genre . '/' . $image->image);
                     }
 
                     $cnt++;
