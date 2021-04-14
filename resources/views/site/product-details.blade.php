@@ -68,7 +68,7 @@
           <h4>Description</h4>
           {!! $product->description !!}
           <dl>
-          @foreach ($product->specification as $specname=>$specvalue)
+          @foreach (json_decode($product->specification, TRUE) as $specname=>$specvalue)
           <dt>{{ $specname }}</dt>
           <dd>{{ $specvalue }}</dd>
           @endforeach
