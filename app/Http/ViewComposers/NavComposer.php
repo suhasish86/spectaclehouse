@@ -3,6 +3,7 @@
 namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
+use App\Admin\Page;
 
 class NavComposer
 {
@@ -14,13 +15,7 @@ class NavComposer
      */
     public function __construct()
     {
-        $this->navList = [
-            'Shawshank redemption',
-            'Forrest Gump',
-            'The Matrix',
-            'Pirates of the Carribean',
-            'Back to the future',
-        ];
+        $this->navList = Page::where('status', 1)->get();
     }
 
     /**
@@ -31,6 +26,7 @@ class NavComposer
      */
     public function compose(View $view)
     {
+        $this->navList = Page::where('status', 1)->get();
         $view->with('navList', $this->navList);
     }
 }

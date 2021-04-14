@@ -32,28 +32,14 @@
       </button>
       <div class="blankSpace d-none d-lg-block"></div>
       <div class="collapse navbar-collapse" id="navbarNav">
+
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="category-frames.html">Frames</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="category-sunglasses.html">Sunglasses</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="eye-clinic.html">Eye Clinic</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="services.html">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="category-accessories.html">Accessories</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contacts</a>
-          </li>
+            @foreach ($navList as $navigation)
+                <a class="nav-link" href="{{ route('page_nav', ['page' => $navigation->pageslug])}}" href="category-frames.html">{{ $navigation->pagename }}</a>
+            @endforeach
         </ul>
       </div>
-      <div class="headerIcons">
+      {{-- <div class="headerIcons">
         <ul>
           <li><a href="javascript:void(0)"><span class="headerIconsBox"><i class="lni lni-search-alt"></i></span></a></li>
           <li><a href="cart.html"><span class="headerIconsBox"><i class="lni lni-cart"></i><span class="cartNo">12</span></span></a></li>
@@ -70,7 +56,7 @@
             </div>
           </li>
         </ul>
-      </div>
+      </div> --}}
 
     </nav>
   </header>
