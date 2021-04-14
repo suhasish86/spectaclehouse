@@ -21,6 +21,7 @@ class ProductRepository implements ProductRepositoryInterface
                 $cnt++;
             }
         }
+        dd($our_collection);
         return $our_collection;
     }
 
