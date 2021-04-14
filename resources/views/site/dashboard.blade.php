@@ -104,13 +104,14 @@
     <div class="container">
         <h2 class="text-center m-5">New Arrival</h2>
         <div class="row">
-            @foreach($our_collection as $product)
+            @foreach($newest_arrival as $product)
             <div class="col-xs-6 col-sm-6 col-md-4">
                 <div class="proBox">
                     <div class="proBoxImg">
                         <a href="product-details.html">
 
-                            <img src="{{ $product->image }}" alt="">
+                            {{-- <img src="{{ $product->image }}" alt=""> --}}
+                            <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
                         </a>
                     </div>
                     <div class="proBoxDes">
