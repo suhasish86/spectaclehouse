@@ -17,7 +17,7 @@ class ProductRepository implements ProductRepositoryInterface
             $product->inventories = Inventory::where('productid', $productid)->get();
 
             foreach ($product->galleries as $image) {
-                $image->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+                $image->image = asset('/storage/uploads/gallery/' . $product->genre . '/' . $image->image);
             }
             return $product;
         }
