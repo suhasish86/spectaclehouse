@@ -14,13 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
  */
 
-Route::get('/', 'HomeController@index');
-Route::get('/{page}', 'HomeController@process')->name('page_nav');
 
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
 
 // All admin routes
 
@@ -148,3 +142,12 @@ Route::name('admin.')->prefix('admin/')->namespace('Admin')->group(function () {
     });
 
 });
+
+
+Route::get('/', 'HomeController@index');
+Route::get('/{page}', 'HomeController@process')->name('page_nav');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
