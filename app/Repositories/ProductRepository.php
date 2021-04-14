@@ -32,20 +32,20 @@ class ProductRepository implements ProductRepositoryInterface
         $newest_arrival = Product::where('status', 1)
             ->whereIn('genre', ['frames', 'sunglass'])
             ->orderBy('created_at', 'desc')
-            ->limit(9)
-            ->with('galleries')
+            // ->limit(9)
+            // ->with('galleries')
             ->get();
-        foreach ($newest_arrival as $product) {
-            $gallery = $product->galleries;
-            $cnt = 1;
-            foreach ($product->galleries as $image) {
-                if ($cnt == 1) {
-                    $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
-                }
+        // foreach ($newest_arrival as $product) {
+        //     $gallery = $product->galleries;
+        //     $cnt = 1;
+        //     foreach ($product->galleries as $image) {
+        //         if ($cnt == 1) {
+        //             $product->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+        //         }
 
-                $cnt++;
-            }
-        }
+        //         $cnt++;
+        //     }
+        // }
         return $newest_arrival;
     }
 }
