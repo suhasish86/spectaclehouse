@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin\Brand;
 use App\Admin\Page;
+use App\Admin\Product;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -25,7 +28,31 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('site.dashboard');
+        $our_brands = Brand::where('status', 1)->get();
+        $our_collection = Product::where('status', 1)->orderBy(DB::raw('RAND(10)'))->with('galleries')->get();
+        $newest_arrival = Product::where('status', 1)->orderBy('created_at', 'desc')->limit(6)->with('galleries')->get();
+
+        foreach($our_collection as $product){
+            $gallery = $product->galleries;
+            $cnt = 1;
+            foreach($product->galleries as $image){
+                if($cnt == 1)
+                $product->image = '/storage/uploads/gallery/'.$product->genre.'/'.$image;
+                $cnt++;
+            }
+        }
+
+        foreach($newest_arrival as $product){
+            $gallery = $product->galleries;
+            $cnt = 1;
+            foreach($product->galleries as $image){
+                if($cnt == 1)
+                $product->image = '/storage/uploads/gallery/'.$product->genre.'/'.$image;
+                $cnt++;
+            }
+        }
+
+        return view('site.dashboard', compact('our_brands', 'our_collection', 'newest_arrival'));
     }
 
 
@@ -38,9 +65,13 @@ class HomeController extends Controller
     {
         if(isset($page->pageslug)){
             switch($page->pageslug){
+                case 'home':
+                    return view('site.dashboard');
+                    break;
                 case 'frames':
                     return view('site.dashboard');
                     break;
+
             }
         }
         // return view('site.dashboard');

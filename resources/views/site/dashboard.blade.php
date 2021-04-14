@@ -31,47 +31,26 @@
     </div>
 </section>
 <!---------------------- Category End ---------------------------->
-<!---------------------- New Arrival Start ---------------------------->
+@if(!empty($our_collection))
+<!---------------------- Our Collection ---------------------------->
 <section class="p-5 paddingTopOff">
     <div class="container">
         <h2 class="text-center m-5">Our ollection</h2>
         <div class="trendingSlider">
             <div class="loop owl-carousel owl-theme">
+                @foreach($our_collection as $product)
                 <div class="item">
                     <a href="product-details.html">
-                        <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
+                        <img src="{{ $product->image }}" alt="">
                     </a>
                 </div>
-                <div class="item">
-                    <a href="product-details.html">
-                        <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="product-details.html">
-                        <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="product-details.html">
-                        <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="product-details.html">
-                        <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="product-details.html">
-                        <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
-                    </a>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
 </section>
-<!---------------------- New Arrival End ---------------------------->
+@endif
+<!---------------------- Our Collection End ---------------------------->
 <!---------------------- Animation/Glass Shape Start ---------------------------->
 <section class="animationBg ">
     <div class="container">
@@ -115,98 +94,33 @@
     </div>
 </section>
 <!---------------------- Animation/Glass Shape End ---------------------------->
+@if(!empty($newest_arrival))
 <!---------------------- New Arrival Start ---------------------------->
 <section class="p-5">
     <div class="container">
         <h2 class="text-center m-5">New Arrival</h2>
         <div class="row">
+            @foreach($our_collection as $product)
             <div class="col-xs-6 col-sm-6 col-md-4">
                 <div class="proBox">
                     <div class="proBoxImg">
                         <a href="product-details.html">
+
                             <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
                         </a>
                     </div>
                     <div class="proBoxDes">
-                        <h4>Vincent Chase Polarized</h4>
-                        <h5>₹999</h5>
+                        <h4>{{ $product->productname}}</h4>
+                        <h5>{{ $product->price }}</h5>
                         <a href="product-details.html" class="btn btn-info">Buy Now</a>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-4">
-                <div class="proBox">
-                    <div class="proBoxImg">
-                        <a href="product-details.html">
-                            <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
-                        </a>
-                    </div>
-                    <div class="proBoxDes">
-                        <h4>Vincent Chase</h4>
-                        <h5>₹1100</h5>
-                        <a href="product-details.html" class="btn btn-info">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-4">
-                <div class="proBox">
-                    <div class="proBoxImg">
-                        <a href="product-details.html">
-                            <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
-                        </a>
-                    </div>
-                    <div class="proBoxDes">
-                        <h4>Vincent Chase Polarized</h4>
-                        <h5>₹700</h5>
-                        <a href="product-details.html" class="btn btn-info">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-4">
-                <div class="proBox">
-                    <div class="proBoxImg">
-                        <a href="product-details.html">
-                            <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
-                        </a>
-                    </div>
-                    <div class="proBoxDes">
-                        <h4>Vincent Chase Polarized</h4>
-                        <h5>₹999</h5>
-                        <a href="product-details.html" class="btn btn-info">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-4">
-                <div class="proBox">
-                    <div class="proBoxImg">
-                        <a href="product-details.html">
-                            <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
-                        </a>
-                    </div>
-                    <div class="proBoxDes">
-                        <h4>Vincent Chase</h4>
-                        <h5>₹1100</h5>
-                        <a href="product-details.html" class="btn btn-info">Buy Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-4">
-                <div class="proBox">
-                    <div class="proBoxImg">
-                        <a href="product-details.html">
-                            <img src="{{ asset('siteassets/img/pro-placeholder.jpg') }}" alt="">
-                        </a>
-                    </div>
-                    <div class="proBoxDes">
-                        <h4>Vincent Chase Polarized</h4>
-                        <h5>₹700</h5>
-                        <a href="product-details.html" class="btn btn-info">Buy Now</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
+@endif
 <!---------------------- New Arrival End ---------------------------->
 <!---------------------- Brand Start ---------------------------->
 <section class="p-5 paddingTopOff">
