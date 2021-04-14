@@ -136,5 +136,11 @@
 
   });
 </script>
+
+<!-- Page Scrypt Area
+============================================ -->
+@yield('page-extra-script')
+<!-- Page Scrypt Area End ------------------->
+
 </body>
 </html>
