@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-content-area')
-{{-- @dd($product) --}}
+@dd($product)
 <!---------------------- New Arrival Start ---------------------------->
 <section class="p-5">
     <div class="container">
