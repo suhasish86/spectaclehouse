@@ -65,9 +65,6 @@ class HomeController extends Controller
     {
         if(isset($page->pageslug)){
             switch($page->pageslug){
-                case 'home':
-                    return view('site.dashboard');
-                    break;
                 case 'frames':
                     return view('site.dashboard');
                     break;
