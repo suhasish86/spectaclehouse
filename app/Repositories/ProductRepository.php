@@ -11,6 +11,7 @@ class ProductRepository implements ProductRepositoryInterface
         $our_collection = Product::where('status', 1)
             ->whereIn('genre', ['frame', 'sunglass'])
             ->limit(6)
+            ->has('galleries')
             ->with('galleries')
             ->get();
         foreach ($our_collection as $product) {
@@ -33,6 +34,7 @@ class ProductRepository implements ProductRepositoryInterface
             ->whereIn('genre', ['frame', 'sunglass'])
             ->orderBy('created_at', 'desc')
             ->limit(9)
+            ->has('galleries')
             ->with('galleries')
             ->get();
         foreach ($newest_arrival as $product) {
