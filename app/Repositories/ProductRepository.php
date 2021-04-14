@@ -33,7 +33,7 @@ class ProductRepository implements ProductRepositoryInterface
             ->whereIn('genre', ['frames', 'sunglass'])
             ->orderBy('created_at', 'desc')
             //->limit(9)
-            ->with('galleries')
+            // ->with('galleries')
             ->get();
         foreach ($newest_arrival as $product) {
             $gallery = $product->galleries;
