@@ -17,7 +17,7 @@
                 @if (!empty($product->galleries))
                 <ul class="slides">
                     @foreach ($product->galleries as $gallery)
-                    <li><img src="{{ $gallery->image }}" /></li>
+                    <li><img src="{{ '/storage/uploads/gallery/' . $product->genre . '/' . $gallery->image }}" /></li>
                     @endforeach
                 </ul>
                 @endif

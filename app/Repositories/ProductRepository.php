@@ -14,9 +14,9 @@ class ProductRepository implements ProductRepositoryInterface
                 ->with('galleries')
                 ->get();
 
-            foreach ($product->galleries as $image) {
-                $image->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
-            }
+            // foreach ($product->galleries as $image) {
+            //     $image->image = '/storage/uploads/gallery/' . $product->genre . '/' . $image->image;
+            // }
             return $product;
         }
         return false;
