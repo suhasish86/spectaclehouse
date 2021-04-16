@@ -38,6 +38,7 @@
           <div class="proDetails">
             <div class="mb-3">
           <h3 class="productTitle">{{ $product->productname }}</h3>
+          <p>{!! $product->description !!}</p>
           <h4 class="detailsPrice"><span class="text-primary">₹</span> {{ $product->price}}</h4>
         </div>
         <div class="mb-2">
@@ -65,13 +66,12 @@
         </div> --}}
 
         <div class="descriptionBox">
-          <h4>Description</h4>
-          {!! $product->description !!}
+          <h4>Specifications</h4>
           <dl>
-          {{-- @foreach (json_decode($product->specification, TRUE) as $specname=>$specvalue)
+          @foreach ($product->specificationas $specname=>$specvalue)
           <dt>{{ $specname }}</dt>
           <dd>{{ $specvalue }}</dd>
-          @endforeach --}}
+          @endforeach
         </div>
 
         </div>
