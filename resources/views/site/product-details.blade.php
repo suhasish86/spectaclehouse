@@ -44,13 +44,13 @@
         <div class="mb-2">
           <h5>Color</h5>
           <div class="colorImg">
-            @if (!empty($product->inventories))
+            {{-- @if (!empty($product->inventories))
             <ul>
                 @foreach ($product->inventories as $inventory)
                 <li style="background-color: {{ $inventory->color }};"></li>
                 @endforeach
             </ul>
-            @endif
+            @endif --}}
           </div>
         </div>
 
