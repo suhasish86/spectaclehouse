@@ -14,22 +14,22 @@
         <div class="col-md-6">
           <div class="proDetailsImg">
             <div id="slider" class="flexslider">
-                @if (!empty($product->galleries))
+                {{-- @if (!empty($product->galleries))
                 <ul class="slides">
                     @foreach ($product->galleries as $gallery)
                     <li><img src="{{ $gallery->image }}" /></li>
                     @endforeach
                 </ul>
-                @endif
+                @endif --}}
           </div>
           <div id="carousel" class="flexslider">
-            @if (!empty($product->galleries))
+            {{-- @if (!empty($product->galleries))
             <ul class="slides">
                 @foreach ($product->galleries as $gallery)
                 <li><img src="{{ $gallery->image }}" /></li>
                 @endforeach
             </ul>
-            @endif
+            @endif --}}
           </div>
           </div>
         </div>
