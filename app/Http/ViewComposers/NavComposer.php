@@ -26,7 +26,7 @@ class NavComposer
      */
     public function compose(View $view)
     {
-        $this->navList = Page::where('status', 1)->get();
+        // $this->navList = Page::where('status', 1)->get();
         $view->with('navList', $this->navList);
     }
 }
