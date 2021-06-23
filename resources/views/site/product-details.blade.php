@@ -68,10 +68,10 @@
         <div class="descriptionBox">
           <h4>Specifications</h4>
           <dl>
-          @foreach ($product->specificationas $specname=>$specvalue)
+          {{-- @foreach ($product->specificationas $specname=>$specvalue)
           <dt>{{ $specname }}</dt>
           <dd>{{ $specvalue }}</dd>
-          @endforeach
+          @endforeach --}}
         </div>
 
         </div>
