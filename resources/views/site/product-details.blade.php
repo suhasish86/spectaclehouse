@@ -66,10 +66,10 @@
         </div> --}}
 
         <div class="descriptionBox">
-            @if (!empty($product->galleries))
+            @if (!empty($product->specifications))
             <h4>Specifications</h4>
             <dl>
-                @foreach ($product->specificationas $specname=>$specvalue)
+                @foreach ($product->specifications $specname=>$specvalue)
                 <dt>{{ $specname }}</dt>
                 <dd>{{ $specvalue }}</dd>
                 @endforeach
