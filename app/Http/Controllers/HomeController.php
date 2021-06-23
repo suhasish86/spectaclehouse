@@ -98,7 +98,8 @@ class HomeController extends Controller
                     return view('site.eyeclinic', compact('eye_clinic'));
                     break;
                 case 'services':
-                    return view('site.services');
+                    $services = $this->facility->get_facility('services');
+                    return view('site.services', compact('services'));
                     break;
                 case 'accessories':
                     return view('site.accessories');
