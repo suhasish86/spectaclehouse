@@ -15,7 +15,7 @@ class NavComposer
      */
     public function __construct()
     {
-        $this->navList = Page::where('status', 1)->get();
+        $this->navList = Page::where('status', 1)->orderBy('ordering', 'ASC')->get();
     }
 
     /**
