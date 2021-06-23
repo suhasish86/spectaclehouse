@@ -14,22 +14,22 @@
         <div class="col-md-6">
           <div class="proDetailsImg">
             <div id="slider" class="flexslider">
-                {{-- @if (!empty($product->galleries))
+                @if (!empty($product->galleries))
                 <ul class="slides">
                     @foreach ($product->galleries as $gallery)
                     <li><img src="{{ $gallery->image }}" /></li>
                     @endforeach
                 </ul>
-                @endif --}}
+                @endif
           </div>
           <div id="carousel" class="flexslider">
-            {{-- @if (!empty($product->galleries))
+            @if (!empty($product->galleries))
             <ul class="slides">
                 @foreach ($product->galleries as $gallery)
                 <li><img src="{{ $gallery->image }}" /></li>
                 @endforeach
             </ul>
-            @endif --}}
+            @endif
           </div>
           </div>
         </div>
@@ -44,13 +44,13 @@
         <div class="mb-2">
           <h5>Color</h5>
           <div class="colorImg">
-            {{-- @if (!empty($product->inventories))
+            @if (!empty($product->inventories))
             <ul>
                 @foreach ($product->inventories as $inventory)
                 <li style="background-color: {{ $inventory->color }};"></li>
                 @endforeach
             </ul>
-            @endif --}}
+            @endif
           </div>
         </div>
 
@@ -66,12 +66,15 @@
         </div> --}}
 
         <div class="descriptionBox">
-          <h4>Specifications</h4>
-          <dl>
-          {{-- @foreach ($product->specificationas $specname=>$specvalue)
-          <dt>{{ $specname }}</dt>
-          <dd>{{ $specvalue }}</dd>
-          @endforeach --}}
+            @if (!empty($product->galleries))
+            <h4>Specifications</h4>
+            <dl>
+                @foreach ($product->specificationas $specname=>$specvalue)
+                <dt>{{ $specname }}</dt>
+                <dd>{{ $specvalue }}</dd>
+                @endforeach
+            </dl>
+            @endif
         </div>
 
         </div>
