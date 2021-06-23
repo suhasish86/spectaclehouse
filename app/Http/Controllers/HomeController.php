@@ -86,7 +86,7 @@ class HomeController extends Controller
                     $best_deal = $this->product->get_genre_best_deals('lense');
                     return view('site.productlist', compact('collection', 'trending', 'newest', 'best_deal'));
                     break;
-                case 'contactlense':
+                case 'contact-lense':
                     $collection = $this->product->get_genre_collection('contactlense');
                     $trending = $this->product->get_genre_trending('contactlense');
                     $newest = $this->product->get_genre_collection('contactlense');
