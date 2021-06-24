@@ -14,8 +14,8 @@
         @foreach($services as $facility)
             <div class="row align-items-center mb-5">
                 <div class="col-md-6 {{ (($loop->iteration%2) == 0) ? 'order-md-2' : '' }}">
-                    @if ($facility->facilityname != '')
-                        <div class="mb-2"><img src="{{ $facility->facilityname }}" alt=""></div>
+                    @if ($facility->image != '')
+                        <div class="mb-2"><img src="{{ $facility->image }}" alt=""></div>
                     @else
                         <div class="mb-2"><img src="{{ asset('siteassets/img/services.png') }}" alt=""></div>
                     @endif
