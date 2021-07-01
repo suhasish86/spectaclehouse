@@ -144,7 +144,7 @@ Route::name('admin.')->prefix('admin/')->namespace('Admin')->group(function () {
 });
 
 
-Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/{page}', 'HomeController@process')->name('page_nav');
 Route::get('/product/{product}', 'HomeController@show')->name('product_details');
