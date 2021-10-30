@@ -54,7 +54,7 @@ class LoginController extends Controller
             return route('admin.dashboard');
         }
 
-        return '/home';
+        return '/account';
     }
 
     /**

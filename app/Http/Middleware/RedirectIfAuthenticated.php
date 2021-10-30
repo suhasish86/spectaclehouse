@@ -22,7 +22,7 @@ class RedirectIfAuthenticated
             if(Auth::user()->hasAnyRole(['admin'])){
                 return redirect()->intended(route('admin.dashboard'));
             }
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('site.myaccount'));
         }
 
         return $next($request);
