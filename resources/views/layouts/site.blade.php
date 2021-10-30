@@ -39,7 +39,7 @@
             @endforeach
         </ul>
       </div>
-      {{-- <div class="headerIcons">
+      <div class="headerIcons">
         <ul>
           <li><a href="javascript:void(0)"><span class="headerIconsBox"><i class="lni lni-search-alt"></i></span></a></li>
           <li><a href="cart.html"><span class="headerIconsBox"><i class="lni lni-cart"></i><span class="cartNo">12</span></span></a></li>
@@ -49,14 +49,22 @@
                 <span class="headerIconsBox"> <i class="lni lni-user"></i></span>
               </div>
               <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="login.html">Sign In</a>
-                <a class="dropdown-item" href="registration.html">Sign Up</a>
-                <a class="dropdown-item" href="my-account.html">My Account</a>
+                @if (Auth::check())
+                <a class="dropdown-item" href="{{ route('site.myaccount') }}">My Account</a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Sign Out</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @else
+                <a class="dropdown-item" href="{{ route('login') }}">Sign In</a>
+                <a class="dropdown-item" href="{{ route('register') }}">Sign Up</a>
+                @endif
               </div>
             </div>
           </li>
         </ul>
-      </div> --}}
+      </div>
 
     </nav>
   </header>

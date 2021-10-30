@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+
+
+Auth::routes(['verify' => true]);
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -143,13 +147,15 @@ Route::name('admin.')->prefix('admin/')->namespace('Admin')->group(function () {
 
 });
 
-
-// Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/{page}', 'HomeController@process')->name('page_nav');
 Route::get('/product/{product}', 'HomeController@show')->name('product_details');
 
+Route::name('site.')->group(function () {
+    Route::get('/account', 'UserController@myaccount')->name('myaccount');
+});
+Route::get('/{page}', 'HomeController@process')->name('page_nav');
 
 
 
-Auth::routes();
+
+

@@ -20,10 +20,6 @@ class Adminlogin
             if ($request->user()->hasRole('admin')) {
                 return $next($request);
             }
-
-            if ($request->user()->hasRole('member')) {
-                return redirect('/');
-            }
         }
 
         return redirect('/admin/login');

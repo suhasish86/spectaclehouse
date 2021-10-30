@@ -17,12 +17,8 @@ class Frontlogin
     public function handle($request, Closure $next)
     {
         if (Auth::check()) {
-            if ($request->user()->hasRole('member')) {
+            if ($request->user()->hasRole('customer')) {
                 return $next($request);
-            }
-
-            if ($request->user()->hasRole('admin')) {
-                return redirect('/admin');
             }
         }
 
