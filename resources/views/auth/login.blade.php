@@ -10,7 +10,7 @@
                     <div class="whiteBox mb-2">
                         <h3 class="text-center mb-3">Login</h3>
                         <div class="form-group">
-                            <div class="iconField"><input type="email" name="email" id="email" value="{{ old('email') }}" class="form-control" placeholder="User ID"><span
+                            <div class="iconField"><input type="email" name="email" id="email" value="{{ old('email') }}" class="form-control" placeholder="{{ __('E-Mail Address') }}"><span
                                     class="fieldIcon"><i class="lni lni-user"></i></span></div>
                             @error('email')
                                 <div class="alert alert-danger text-center" role="alert">

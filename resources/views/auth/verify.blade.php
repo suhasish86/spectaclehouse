@@ -1,19 +1,17 @@
-@extends('layouts.app')
+@extends('layouts.site')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
-
-                <div class="card-body">
+@section('page-content-area')
+<section class="p-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-8 col-md-7 col-lg-6 col-xl-5">
+                <div class="whiteBox mb-2">
+                    <h3 class="text-center mb-3">{{ __('Verify Your Email Address') }}</h3>
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
                             {{ __('A fresh verification link has been sent to your email address.') }}
                         </div>
                     @endif
-
                     {{ __('Before proceeding, please check your email for a verification link.') }}
                     {{ __('If you did not receive the email') }},
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
@@ -24,5 +22,5 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection

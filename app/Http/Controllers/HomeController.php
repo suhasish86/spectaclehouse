@@ -24,6 +24,7 @@ class HomeController extends Controller
      */
     public function __construct( ProductRepositoryInterface $product, FacilityRepositoryInterface $facility)
     {
+        $this->middleware('verified');
         $this->product = $product;
         $this->facility = $facility;
     }
