@@ -44,7 +44,7 @@ class LoginController extends Controller
         if ($user->hasRole('admin')) {
             return redirect('/admin');
         } else {
-            return redirect('/home');
+            return redirect('/account');
         }
     }
 
@@ -54,7 +54,7 @@ class LoginController extends Controller
             return route('admin.dashboard');
         }
 
-        return '/account';
+        return redirect('/account');
     }
 
     /**
