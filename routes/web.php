@@ -151,7 +151,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/product/{product}', 'HomeController@show')->name('product_details');
 
 Route::name('site.')->group(function () {
-    Route::get('/account', 'UserController@myaccount')->name('myaccount');
+    Route::get('/account', 'CustomerController@index')->name('myaccount');
 });
 Route::get('/{page}', 'HomeController@process')->name('page_nav');
 
