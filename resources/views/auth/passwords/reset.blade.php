@@ -34,7 +34,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group">
                                 <div class="iconField"><input id="password-confirm" type="password"
                                         class="form-control" name="password_confirmation"
                                         placeholder="{{ __('Password') }}"><span class="fieldIcon"><i
