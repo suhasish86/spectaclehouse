@@ -115,7 +115,7 @@
                     <div class="proBoxDes">
                         <h4>{{ $product->productname}}</h4>
                         <h5><i class="lni lni-rupee"></i> {{ $product->price }}</h5>
-                        <a href="product-details.html" class="btn btn-info">View Now</a>
+                        <a href="{{ route('product_details', ['product'=>$product->productslug])}}" class="btn btn-info">View Now</a>
                     </div>
                 </div>
             </div>

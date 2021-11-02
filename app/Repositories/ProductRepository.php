@@ -8,6 +8,11 @@ use App\Repositories\Interfaces\ProductRepositoryInterface;
 
 class ProductRepository implements ProductRepositoryInterface
 {
+
+    public function get_product($product_id){
+        return Product::find($product_id);
+    }
+
     public function get_details($productid = false)
     {
         if ($productid) {
