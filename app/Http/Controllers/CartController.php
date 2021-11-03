@@ -116,19 +116,19 @@ class CartController extends Controller
             return ($user_cart) ?
             response()->json([
                 'status' => 'success',
-                'message' => 'Cart has been removed.',
+                'message' => 'Cart item has been removed.',
             ]
             ) :
             response()->json([
                 'status' => 'error',
-                'message' => 'Cart removal failed.',
+                'message' => 'Cart item removal failed.',
                 'error' => $error
             ]
             );
         } else {
             return ($user_cart) ?
-            back()->with('error', 'Cart removal failed') :
-            back()->with('success', 'Cart hs been removed');
+            back()->with('error', 'Cart item removal failed') :
+            back()->with('success', 'Cart item has been removed');
         }
     }
 
