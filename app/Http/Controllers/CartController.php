@@ -16,11 +16,11 @@ class CartController extends Controller
         $this->product = $product;
     }
 
-    public function cartList()
+    public function index()
     {
         $cartItems = \Cart::getContent();
         // dd($cartItems);
-        return view('cart', compact('cartItems'));
+        return view('shopping-cart', compact('cartItems'));
     }
 
     public function add_to_cart(Request $request)

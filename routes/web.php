@@ -151,7 +151,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/product/{product}', 'HomeController@show')->name('product_details');
 
 Route::name('site.')->group(function () {
-    Route::get('/account', 'CustomerController@index')->name('myaccount');
+    Route::get('/cart', 'CustomerController@index')->name('shopping-cart');
+    Route::get('/account', 'CartController@index')->name('myaccount');
     Route::post('/add_cart', 'CartController@add_to_cart')->name('add_to_cart');
 });
 Route::get('/{page}', 'HomeController@process')->name('page_nav');
