@@ -46,9 +46,11 @@
                             <div class="colorImg">
                                 @if (!empty($product->inventories))
                                     <ul>
-                                        @foreach ($product->inventories as $inventory)
+                                        @forelse ($product->inventories as $inventory)
                                             <li style="background-color: {{ $inventory->color }};"></li>
-                                        @endforeach
+                                        @empty
+                                            <li>N/A</li>
+                                        @endforelse
                                     </ul>
                                 @endif
                             </div>
