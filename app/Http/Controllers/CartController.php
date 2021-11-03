@@ -19,8 +19,7 @@ class CartController extends Controller
     public function index()
     {
         $cartItems = \Cart::getContent();
-        // dd($cartItems);
-        return view('shopping-cart', compact('cartItems'));
+        return view('site.shopping-cart', compact('cartItems'));
     }
 
     public function add_to_cart(Request $request)
@@ -28,34 +27,22 @@ class CartController extends Controller
         $error = '';
         $user_cart = false;
         $cart_product = $this->product->get_product($request->product_id);
-        if(Auth::check()){
-            try{
-                $user_cart = \Cart::session($request->user()->id)->add(array(
-                    'id' => $request->product_id,
-                    'name' => $request->product_name,
-                    'price' => $request->product_price,
-                    'quantity' => $request->product_quantity,
-                    'attributes' => array(),
-                    'associatedModel' => $cart_product
-                ));
-            }
-            catch(Exception $e){
-                $error = $e->getMessage();
-            }
-        } else {
-            try{
-                $user_cart = \Cart::session($request->product_id)->add(array(
-                    'id' => $request->product_id,
-                    'name' => $request->product_name,
-                    'price' => $request->product_price,
-                    'quantity' => $request->product_quantity,
-                    'attributes' => array(),
-                    'associatedModel' => $cart_product
-                ));
-            }
-            catch(Exception $e){
-                $error = $e->getMessage();
-            }
+        try{
+            $user_cart = \Cart::add(array(
+                'id' => $request->product_id,
+                'name' => $request->product_name,
+                'price' => $request->product_price,
+                'quantity' => $request->product_quantity,
+                'attributes' => array(
+                    'sku' => $cart_product->productsku,
+                    'slug' => $cart_product->productslug,
+                    'image' => $request->product_image,
+                ),
+                'associatedModel' => $cart_product
+            ));
+        }
+        catch(Exception $e){
+            $error = $e->getMessage();
         }
         if ($request->ajax()) {
             return ($user_cart) ?
@@ -65,15 +52,113 @@ class CartController extends Controller
             ]
             ) :
             response()->json([
-                'status' => 'failed',
+                'status' => 'error',
                 'message' => 'Can not process cart.',
-                'Error' => $error
+                'error' => $error
             ]
             );
         } else {
             return ($user_cart) ?
             back()->with('error', $error) :
             back()->with('success', 'Item added to cart');
+        }
+    }
+
+    public function update_cart(Request $request)
+    {
+        $error = '';
+        $user_cart = false;
+        try{
+            $user_cart = \Cart::update(
+                $request->itemid,
+                [
+                    'quantity' => [
+                        'relative' => false,
+                        'value' => $request->item_quantity
+                    ],
+                ]
+            );
+        }
+        catch(Exception $e){
+            $error = $e->getMessage();
+        }
+        if ($request->ajax()) {
+            return ($user_cart) ?
+            response()->json([
+                'status' => 'success',
+                'message' => 'Item updated on cart.',
+            ]
+            ) :
+            response()->json([
+                'status' => 'error',
+                'message' => 'Can not process cart.',
+                'error' => $error
+            ]
+            );
+        } else {
+            return ($user_cart) ?
+            back()->with('error', $error) :
+            back()->with('success', 'Item updated on cart');
+        }
+    }
+
+    public function remove_cart_item(Request $request)
+    {
+        $error = '';
+        $user_cart = false;
+        try{
+            $user_cart = \Cart::remove($request->itemid);
+        }
+        catch(Exception $e){
+            $error = $e->getMessage();
+        }
+        if ($request->ajax()) {
+            return ($user_cart) ?
+            response()->json([
+                'status' => 'success',
+                'message' => 'Cart has been removed.',
+            ]
+            ) :
+            response()->json([
+                'status' => 'error',
+                'message' => 'Cart removal failed.',
+                'error' => $error
+            ]
+            );
+        } else {
+            return ($user_cart) ?
+            back()->with('error', 'Cart removal failed') :
+            back()->with('success', 'Cart hs been removed');
+        }
+    }
+
+    public function clear_cart(Request $request)
+    {
+        $error = '';
+        $user_cart = false;
+        try{
+            $user_cart = \Cart::clear();
+        }
+        catch(Exception $e){
+            $error = $e->getMessage();
+        }
+        if ($request->ajax()) {
+            return ($user_cart) ?
+            response()->json([
+                'status' => 'success',
+                'message' => 'Cart has been cleared.',
+            ]
+            ) :
+            response()->json([
+                'status' => 'error',
+                'message' => 'Cart clearing failed.',
+                'error' => $error
+            ]
+            );
+        } else {
+            return ($user_cart) ?
+            back()->with('error', 'Cart clearing failed') :
+            back()->with('success', 'Cart hs been cleared');
         }
     }
 }

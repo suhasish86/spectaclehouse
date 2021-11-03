@@ -14,6 +14,7 @@
     <link href="{{ asset('siteassets/css/select2.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('siteassets/css/flexslider.css') }}" type="text/css" media="screen" />
     <link rel="stylesheet" href="{{ asset('siteassets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/sweetalert/sweetalert.css') }}">
 
 
     @stack('stylesheets')
@@ -50,10 +51,10 @@
             </div>
             <div class="headerIcons">
                 <ul>
-                    <li><a href="javascript:void(0)"><span class="headerIconsBox"><i
-                                    class="lni lni-search-alt"></i></span></a></li>
-                    <li><a href="cart.html"><span class="headerIconsBox"><i class="lni lni-cart"></i><span
-                                    class="cartNo">12</span></span></a></li>
+                    {{-- <li><a href="javascript:void(0)"><span class="headerIconsBox"><i
+                                    class="lni lni-search-alt"></i></span></a></li> --}}
+                    <li><a href="{{ route('site.shopping-cart') }}"><span class="headerIconsBox"><i class="lni lni-cart"></i><span
+                                    class="cartNo" id="cart_count">{{ Cart::getTotalQuantity() }}</span></span></a></li>
                     <li>
                         <div class="btn-group">
                             <div type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -127,6 +128,7 @@
     <script src="{{ asset('siteassets/js/jquery.scrollme.js') }}"></script>
     <script defer src="{{ asset('siteassets/js/jquery.flexslider.js') }}"></script>
     <script defer src="{{ asset('adminassets/js/form.validate.js') }}"></script>
+    <script defer src="{{ asset('plugins/sweetalert/sweetalert.min.js') }}"></script>
     <!-- AJAX Setup
         ============================================ -->
     <script type="text/javascript">
