@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Mail;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+
+class NewOrderEmail extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+    public function __construct($data)
+    {
+        $this->mail_data = $data;
+    }
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        return $this->from(env('MAIL_USERNAME'), env('APP_NAME'))
+                    ->subject(env('APP_NAME') . ': New Order Received')
+                    ->to($this->mail_data->mail_to)
+                    ->view('mails.new-order', ['mail_data' => $this->mail_data]);
+    }
+}

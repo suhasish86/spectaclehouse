@@ -1,0 +1,180 @@
+@extends('layouts.site')
+
+@section('page-content-area')
+
+    <section class="p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8 mb-3">
+                    <form name="checkout_frm" id="checkout_frm" >
+                        @csrf
+                    {{-- <div class="checkoutBox">
+                        <h4>Login or Signup</h4>
+                        <div class="checkoutBoxContent" style="display: block;">
+                            <div class="form-group"><input type="text" class="form-control"
+                                    placeholder="Enter Email/Mobile Number*"></div>
+                            <a href="#" class="btn btn-primary mobileBtn">Continue</a>
+                        </div>
+                    </div> --}}
+                    <div class="checkoutBox">
+                        <h4>Billing Information</h4>
+                        <div class="checkoutBoxContent" style="display: block;">
+                            <div class="form-group"><input type="text" name="billing_name" id="billing_name" class="form-control" placeholder="Full Name">
+                            </div>
+                            <div class="form-group"><input type="email" name="billing_email" id="billing_email" class="form-control" placeholder="Email"></div>
+                            <div class="form-group"><input type="text" name="billing_phone" id="billing_phone" class="form-control" placeholder="Phone"></div>
+                            <div class="form-group"><textarea name="billing_address" id="billing_address" class="form-control" placeholder="Address"></textarea>
+                            </div>
+                            <div class="form-group"><input type="text" name="billing_pin" id="billing_pin" class="form-control" placeholder="Pin"></div>
+                            <a href="javascript:void(0)" id="billing_continue" class="btn btn-primary mobileBtn">Continue</a>
+                        </div>
+                    </div>
+                    <div class="checkoutBox">
+                        <h4 id="shipping_tab">Shipping Information</h4>
+                        <div class="checkoutBoxContent">
+                            <div class="myCustomCheck mb-2">
+                                <input class="form-check-input" value="1" id="frame" name="same_as_billing" type="checkbox">
+                                <label class="form-check-label" for="frame">Same As Billing Address</label>
+                            </div>
+                            <div class="form-group"><input type="text" name="shipping_name" id="shipping_name" class="form-control" placeholder="Full Name">
+                            </div>
+                            <div class="form-group"><input type="text" name="shipping_email" id="shipping_email" class="form-control" placeholder="Email"></div>
+                            <div class="form-group"><input type="text" name="shipping_phone" id="shipping_phone" class="form-control" placeholder="Phone"></div>
+                            <div class="form-group"><textarea name="shipping_address" id="shipping_address" class="form-control" placeholder="Address"></textarea>
+                            </div>
+                            <div class="form-group"><input type="text" name="shipping_pin" id="shipping_pin" class="form-control" placeholder="Pin"></div>
+                            <a href="javascript:void(0)" id="shipping_continue" class="btn btn-primary mobileBtn">Continue</a>
+                        </div>
+                    </div>
+                    <div class="checkoutBox">
+                        <h4 id="payment_tab">Payment</h4>
+                        <div class="checkoutBoxContent">
+                            <div class="row mb-2">
+                                <h5>We don't recieve online payment for now. It will be available soon!</h4>
+                                <p>Please place your order by clicking the button below. One of our representative will guide you with purchase soon.</p>
+                            </div>
+                            <div class="text-right">
+                                <a href="javascript:void(0);" id="place_order" class="btn btn-primary mobileBtn">Place Order</a>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="checkoutBox">
+                        <h4>Payment</h4>
+                        <div class="checkoutBoxContent">
+                            <div class="row mb-2">
+                                <div class="col-sm-5 col-md-5 col-lg-4 col-xl-3 mb-2">
+                                    <div class="tabLeft">
+                                        <ul>
+                                            <li class="active"><a href="#"><i
+                                                        class="lni lni-credit-cards"></i>Card</a></li>
+                                            <li><a href="#"><i class="lni lni-website-alt"></i>Net Banking</a></li>
+                                            <li><a href="#"><i class="lni lni-wallet"></i>COD</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-7 col-md-7 col-lg-8 col-xl-9">
+                                    <p class="mb-2"><strong>Amount Payble <span
+                                                class="text-primary">₹2000</span></strong> </p>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group"><input type="text" class="form-control"
+                                                    placeholder="Card Holder Name"></div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group"><input type="text" class="form-control"
+                                                    placeholder="Card No"></div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="form-group"><input type="text" class="form-control"
+                                                    placeholder="MM/YY"></div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group"><input type="text" class="form-control"
+                                                    placeholder="CVV"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                                A simple success alert—check it out!
+                            </div>
+                            <div class="alert alert-danger" role="alert">
+                                A simple danger alert—check it out!
+                            </div>
+                            <div class="text-right">
+                                <a href="#" class="btn btn-info mobileBtn">Back</a>
+                                <a href="order-thankyou.html" class="btn btn-primary mobileBtn">Pay</a>
+                            </div>
+                        </div>
+                    </div> --}}
+                </form>
+
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <div class="whiteBox mb-3">
+                        <h5 class="text-center mb-3">ORDER SUMMARY</h5>
+                        <div>
+                            @forelse ($cartItems as $item)
+                            <div>
+                                <div class="d-flex flex-row align-items-center">
+                                    <div>
+                                        <div class="cartImg"><img src="{{ $item->attributes->image }}" alt=""></div>
+                                    </div>
+                                    <div>
+                                        <div class="cartProName">{{ $item->name }} X {{ $item->quantity }}</div>
+                                        <p class="mb-0">₹ {{ $item->price }}</p>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            @empty
+                            <div>
+                                <div class="d-flex flex-row align-items-center">
+                                    <div>
+                                        <div class="cartProName">No product in cart</div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            @endforelse
+                        </div>
+                        <div class="d-flex flex-row align-items-center justify-content-between mb-2">
+                            <div>
+                                <p class="mb-0">Subtotal:</p>
+                            </div>
+                            <div>
+                                <p class="mb-0"><strong>₹ {{ Cart::getTotal() }}</strong></p>
+                            </div>
+                        </div>
+                        {{-- <div class="mb-3">
+                            <div class="mb-1">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Coupon">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-info" type="button" id="button-addon2">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right"><a href="#" class="text-primary">Have a Coupon code?</a></div>
+                        </div> --}}
+                        <div class="d-flex flex-row align-items-center justify-content-between">
+                            <div>
+                                <p class="mb-0">Amount Payble:</p>
+                            </div>
+                            <div>
+                                <p class="mb-0 text-primary"><strong>₹ {{ Cart::getTotal() }}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+@endsection
+
+@push('javascript')
+    <script src="{{ asset('siteassets/js/jquery.responsive-tables.js') }}"></script>
+    <script defer src="{{ asset('siteassets/js/app/checkout.js') }}"></script>
+@endpush

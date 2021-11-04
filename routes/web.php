@@ -153,11 +153,18 @@ Route::get('/product/{product}', 'HomeController@show')->name('product_details')
 Route::name('site.')->group(function () {
     Route::get('/cart', 'CartController@index')->name('shopping-cart');
     Route::get('/account', 'CartController@index')->name('myaccount');
+    Route::get('/checkout', 'CartController@checkout')->name('checkout');
 
     Route::post('/add_cart', 'CartController@add_to_cart')->name('add_to_cart');
     Route::post('/update_cart', 'CartController@update_cart')->name('update_cart');
     Route::post('/remove_cart_item', 'CartController@remove_cart_item')->name('remove_cart_item');
     Route::post('/clear_cart', 'CartController@clear_cart')->name('clear_cart');
+
+
+    Route::post('/place_order', 'OrderController@place_order')->name('place_order');
+    Route::get('/thank_you/{order_no}', 'OrderController@order_success')->name('thank_you');
+
+
 });
 Route::get('/{page}', 'HomeController@process')->name('page_nav');
 

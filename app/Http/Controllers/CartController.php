@@ -161,4 +161,10 @@ class CartController extends Controller
             back()->with('success', 'Cart hs been cleared');
         }
     }
+
+
+    public function checkout(Request $request){
+        $cartItems = \Cart::getContent();
+        return view('site.checkout', compact('cartItems'));
+    }
 }

@@ -12,7 +12,7 @@
                     <thead>
                         <tr>
                             <th>Product</th>
-                            <th>ID</th>
+                            <th>SKU</th>
                             <th width="80">Quantity</th>
                             <th>Price (₹)</th>
                             <th></th>
@@ -74,8 +74,8 @@
                 </div>
             </div>
             <div class="text-right">
-                <a href="#" class="btn btn-info btn-lg mobileBtn">Update Cart</a>
-                <a href="checkout.html" class="btn btn-primary btn-lg mobileBtn">Checkout</a>
+                {{-- <a href="#" class="btn btn-info btn-lg mobileBtn">Update Cart</a> --}}
+                <a href="{{ route('site.checkout') }}" class="btn btn-primary btn-lg mobileBtn">Checkout</a>
             </div>
 
         </div>

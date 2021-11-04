@@ -71,6 +71,10 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Admin\ProductGallery::where('id', base64_decode($value))->orWhere('id', $value)->first();
         });
 
+        Route::bind('order_no', function($value) {
+            return \App\Admin\Order::where('order_no', $value)->with(['billing_address', 'shipping_address'])->first();
+        });
+
     }
 
     /**
