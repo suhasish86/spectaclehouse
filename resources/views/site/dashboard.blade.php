@@ -7,7 +7,7 @@
 @section('page-content-area')
 
 <!---------------------- Category Start ---------------------------->
-<section class="p-5">
+{{-- <section class="p-5">
     <div class="container">
         <div class="d-flex  justify-content-center">
             <div class="">
@@ -33,7 +33,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!---------------------- Category End ---------------------------->
 @if(!empty($our_collection))
 <!---------------------- Our Collection ---------------------------->
