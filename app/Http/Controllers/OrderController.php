@@ -77,16 +77,16 @@ class OrderController extends Controller
                 'order' => $order,
                 'mail_to' => $order->billing_address->email
             ];
-            $user_mail = MailController::sendOrderEmail($mail_data);
+            // $user_mail = MailController::sendOrderEmail($mail_data);
 
             //Mail Admin
             $mail_data = (object)[
                 'cart' => $cartItems,
                 'order' => $order,
-                // 'mail_to' => 'orders@spectaclehouse.in'
+                // 'mail_to' => 'info@spectaclehouse.in'
                 'mail_to' => 'suhasish86@gmail.com'
             ];
-            $admin_email = MailController::sendAdminOrderEmail($mail_data);
+            // $admin_email = MailController::sendAdminOrderEmail($mail_data);
 
             return view('site.thank_you', compact('cartItems', 'order'));
         } else {
