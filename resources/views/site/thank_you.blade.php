@@ -64,7 +64,7 @@
                         <dt>Discount:</dt>
                         <dd>- ₹ 0</dd> --}}
                         <dt><big>Total:</big></dt>
-                        <dd><big>₹ {{ Cart::getTotal() }}</big></dd>
+                        <dd><big>₹ {{ $order->order_total }}</big></dd>
                     </dl>
                 </div>
             </div>

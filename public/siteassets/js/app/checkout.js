@@ -46,42 +46,82 @@ $(function() {
         if (res) $('h4#payment_tab').click();
     });
 
-    $('a#place_order').click(function() {
-        var arg = $('form#checkout_frm').serialize();
-        console.log(arg);
 
-        //Target & Redirect Url
-        var target = host + 'place_order';
-        var redirect = host + 'thank_you';
+    //Razorpay
 
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    var payprocess = function() {
+        var options = {
+            "key": $('a#place_order').attr('data-rz-key'),
+            "amount": $('a#place_order').attr('data-rz-amount'),
+            "currency": $('a#place_order').attr('data-rz-currency'),
+            "name": $('input#billing_name').val(),
+            "description": "Spectacle House",
+            "image": $('a#place_order').attr('data-logo'),
+            "order_id": $('a#place_order').attr('data-order-id'),
+            "handler": function(response) {
+
+                $('input#rzp_paymentid').val(response.razorpay_payment_id);
+                $('input#rzp_orderid').val(response.razorpay_order_id);
+                $('input#rzp_signature').val(response.razorpay_signature);
+                var arg = $('form#checkout_frm').serialize();
+                arg += '&rzp_paymentid=' + response.razorpay_payment_id + '&rzp_orderid=' + response.razorpay_order_id + '&rzp_signature=' + response.razorpay_signature + '&receipt_id=' + $('a#place_order').attr('data-receipt-id');
+                console.log(arg);
+
+                //Target & Redirect Url
+                var target = host + 'place_order';
+                var redirect = host + 'thank_you';
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: target,
+                    type: "POST",
+                    dataType: 'html',
+                    data: arg,
+                    timeout: 20000,
+                    cache: false,
+                    success: function(responce) {
+                        console.log(responce);
+                        responce = JSON.parse(responce);
+                        if (responce.status == 'success') {
+                            swal({
+                                text: responce.message,
+                                icon: responce.status,
+                            });
+                            setTimeout('window.location.href="' + redirect + '/' + responce.order_no + '";', 2000);
+                        } else {
+                            swal({
+                                text: responce.message,
+                                icon: responce.status,
+                            });
+                        }
+
+                        return false;
+                    }
+                });
             },
-            url: target,
-            type: "POST",
-            dataType: 'html',
-            data: arg,
-            timeout: 20000,
-            cache: false,
-            success: function(responce) {
-                console.log(responce);
-                responce = JSON.parse(responce);
-                if (responce.status == 'success') {
-                    swal({
-                        text: responce.message,
-                        icon: responce.status,
-                    });
-                    setTimeout('window.location.href="' + redirect + '/' + responce.order_no + '";', 2000);
-                } else {
-                    swal({
-                        text: responce.message,
-                        icon: responce.status,
-                    });
-                }
-
-                return false;
+            "prefill": {
+                "name": $('input#billing_name').val(),
+                "email": $('input#billing_email').val(),
+                "contact": $('input#billing_phone').val()
+            },
+            "notes": {
+                "address": $('input#billing_address').val()
+            },
+            "theme": {
+                "color": "#F37254"
             }
-        });
+        };
+
+
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    }
+
+
+
+    $('a#place_order').click(function() {
+        payprocess();
     });
 });

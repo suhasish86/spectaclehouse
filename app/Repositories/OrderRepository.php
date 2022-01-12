@@ -5,15 +5,21 @@ use App\Admin\Billing_address;
 use App\Admin\Order;
 use App\Admin\Shipping_address;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class OrderRepository implements OrderRepositoryInterface
 {
     public function save_order($request)
     {
         $order = new Order();
+
+        $order->user_id = (Auth::check()) ? $request->user->id : 0;
+        $order->receipt_id = $request->receipt_id;
+
         $order->order_no = time();
         $order->order_total = number_format($request->order_total, 2);
         $order->order_summary = $request->order_summary;
+        $order->payment_status = (isset($request->payment_status)) ? $request->payment_status : 'initiated';
 
         if($order->save()){
             $billing = $this->build_order_billing($request);

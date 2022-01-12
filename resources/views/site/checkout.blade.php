@@ -50,64 +50,21 @@
                         <h4 id="payment_tab">Payment</h4>
                         <div class="checkoutBoxContent">
                             <div class="row mb-2">
-                                <h5>We don't recieve online payment for now. It will be available soon!</h4>
-                                <p>Please place your order by clicking the button below. One of our representative will guide you with purchase soon.</p>
+                                <p>Please pay for your order by clicking the button below. One of our representative will guide you with purchase soon.</p>
                             </div>
                             <div class="text-right">
-                                <a href="javascript:void(0);" id="place_order" class="btn btn-primary mobileBtn">Place Order</a>
+                                <a class="btn btn-primary mobileBtn"
+                                href="javascript:void(0);"
+                                data-receipt-id="{{ $razorpay['receipt_id']}}"
+                                data-order-id="{{ $razorpay['orderId']}}"
+                                data-rz-key="{{ $razorpay['razorpayId']}}"
+                                data-rz-amount="{{ $razorpay['amount']}}"
+                                data-rz-currency="{{ $razorpay['currency']}}"
+                                data-logo="{{ $razorpay['logo'] }}"
+                                id="place_order" >Pay Now</a>
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="checkoutBox">
-                        <h4>Payment</h4>
-                        <div class="checkoutBoxContent">
-                            <div class="row mb-2">
-                                <div class="col-sm-5 col-md-5 col-lg-4 col-xl-3 mb-2">
-                                    <div class="tabLeft">
-                                        <ul>
-                                            <li class="active"><a href="#"><i
-                                                        class="lni lni-credit-cards"></i>Card</a></li>
-                                            <li><a href="#"><i class="lni lni-website-alt"></i>Net Banking</a></li>
-                                            <li><a href="#"><i class="lni lni-wallet"></i>COD</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-7 col-md-7 col-lg-8 col-xl-9">
-                                    <p class="mb-2"><strong>Amount Payble <span
-                                                class="text-primary">₹2000</span></strong> </p>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-group"><input type="text" class="form-control"
-                                                    placeholder="Card Holder Name"></div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <div class="form-group"><input type="text" class="form-control"
-                                                    placeholder="Card No"></div>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <div class="form-group"><input type="text" class="form-control"
-                                                    placeholder="MM/YY"></div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group"><input type="text" class="form-control"
-                                                    placeholder="CVV"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="alert alert-success" role="alert">
-                                A simple success alert—check it out!
-                            </div>
-                            <div class="alert alert-danger" role="alert">
-                                A simple danger alert—check it out!
-                            </div>
-                            <div class="text-right">
-                                <a href="#" class="btn btn-info mobileBtn">Back</a>
-                                <a href="order-thankyou.html" class="btn btn-primary mobileBtn">Pay</a>
-                            </div>
-                        </div>
-                    </div> --}}
                 </form>
 
                 </div>
@@ -176,5 +133,6 @@
 
 @push('javascript')
     <script src="{{ asset('siteassets/js/jquery.responsive-tables.js') }}"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script defer src="{{ asset('siteassets/js/app/checkout.js') }}"></script>
 @endpush

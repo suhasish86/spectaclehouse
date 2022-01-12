@@ -55,7 +55,7 @@
                                     class="lni lni-search-alt"></i></span></a></li> --}}
                     <li><a href="{{ route('site.shopping-cart') }}"><span class="headerIconsBox"><i class="lni lni-cart"></i><span
                                     class="cartNo" id="cart_count">{{ Cart::getTotalQuantity() }}</span></span></a></li>
-                    {{-- <li>
+                    <li>
                         <div class="btn-group">
                             <div type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
@@ -77,7 +77,7 @@
                                 @endif
                             </div>
                         </div>
-                    </li> --}}
+                    </li>
                 </ul>
             </div>
 

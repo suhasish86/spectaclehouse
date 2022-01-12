@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Repositories\Interfaces\ProductRepositoryInterface;
 use Illuminate\Http\Request;
+use Razorpay\Api\Api;
+use Illuminate\Support\Str;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    protected $product;
+    protected $product, $razorpayId, $razorpayKey;
 
     public function __construct(ProductRepositoryInterface $product)
     {
         $this->product = $product;
+        $this->razorpayId = 'rzp_test_ZqbSpHcl9zHGfr';
+        $this->razorpayKey = 'qPMmw5g3gJRLrqsV114t7wQT';
     }
 
     public function index()
@@ -165,6 +169,28 @@ class CartController extends Controller
 
     public function checkout(Request $request){
         $cartItems = \Cart::getContent();
-        return view('site.checkout', compact('cartItems'));
+        $order_total = \Cart::getTotal();
+        $receiptId = Str::random(20);
+        $api = new Api($this->razorpayId, $this->razorpayKey);
+
+
+
+        // Creating order
+        $order = $api->order->create([
+            'receipt' => $receiptId,
+            'amount' => $order_total * 100,
+            'currency' => 'INR',
+        ]);
+
+        // Return response on payment page
+        $razorpay = [
+            'orderId' => $order['id'],
+            'receipt_id' => $receiptId,
+            'razorpayId' => $this->razorpayId,
+            'amount' => $order_total * 100,
+            'currency' => 'INR',
+            'logo' => asset('siteassets/img/logo.png')
+        ];
+        return view('site.checkout', compact('cartItems', 'razorpay'));
     }
 }
