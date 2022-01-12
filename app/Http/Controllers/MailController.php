@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\NewOrderEmail;
 use App\Mail\OrderSuccessEmail;
 use App\Mail\SignupEmail;
+use App\Mail\ContactEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -20,5 +21,9 @@ class MailController extends Controller
 
     public static function sendAdminOrderEmail($mail_data){
         Mail::to($mail_data->mail_to)->send(new OrderSuccessEmail($mail_data));
+    }
+
+    public static function sendContactEmail($mail_data){
+        Mail::to($mail_data['mail_to'])->send(new ContactEmail($mail_data));
     }
 }

@@ -162,6 +162,9 @@ Route::name('site.')->group(function () {
     Route::post('/clear_cart', 'CartController@clear_cart')->name('clear_cart');
 
 
+    Route::get('/contact', 'HomeController@contact')->name('contact');
+    Route::post('/contact', 'HomeController@contact_process')->name('contact_process');
+
     Route::post('/place_order', 'OrderController@place_order')->name('place_order');
     Route::get('/thank_you/{order_no}', 'OrderController@order_success')->name('thank_you');
 

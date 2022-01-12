@@ -6,7 +6,7 @@ use App\Admin\Order;
 use App\Http\Requests\OrderRequest;
 use App\Repositories\Interfaces\OrderRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
-use Carbon\Carbon;
+use App\Http\Controllers\MailController;
 use Razorpay\Api\Api;
 
 class OrderController extends Controller

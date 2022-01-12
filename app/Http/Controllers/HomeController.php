@@ -7,6 +7,8 @@ use App\Admin\Page;
 use App\Admin\Product;
 use App\Repositories\Interfaces\ProductRepositoryInterface;
 use App\Repositories\Interfaces\FacilityRepositoryInterface;
+use App\Http\Requests\ContactRequest;
+use App\Http\Controllers\MailController;
 
 
 use Illuminate\Http\Request;
@@ -107,5 +109,31 @@ class HomeController extends Controller
 
             }
         }
+    }
+
+    public function contact(Request $request){
+        return view('site.contact');
+    }
+
+    public function contact_process(ContactRequest $request){
+        $mail_data = [
+            'mail_to' => $request->contact_email,
+            'contact_name' => $request->contact_name,
+            'contact_email' => $request->contact_email,
+            'contact_phone' => $request->contact_phone,
+            'contact_message' => $request->contact_message,
+        ];
+        $user_mail = MailController::sendContactEmail($mail_data);
+        return ($user_mail) ?
+            response()->json([
+                'status' => 'success',
+                'message' => 'Contact request sent.',
+            ]
+            ) :
+            response()->json([
+                'status' => 'error',
+                'message' => 'Sorry! something went wrong, please try again.',
+            ]
+            );
     }
 }
